@@ -2,7 +2,7 @@
  # @Author: yang
  # @Date: 2024-12-31 15:39:27
  # @LastEditors: yang
- # @LastEditTime: 2024-12-31 16:22:39
+ # @LastEditTime: 2024-12-31 16:29:05
  # @Description: 部署到 GitHub Pages
 ###
 
@@ -33,7 +33,7 @@ jobs:
         run: npm run build
 
       - name: List files in dist directory  # 调试步骤：列出 dist 目录中的文件
-        run: ls -la dist
+        run: ls -la dist || echo "dist directory not found"
 
       - name: Deploy to GitHub Pages  # 部署到 GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
