@@ -1,28 +1,24 @@
-# myobject
+# hooton.github.io
 
-This template should help get you started developing with Vue 3 in Vite.
+这是一个基于 [Vue.js](https://vuejs.org/) + [Vite](https://vitejs.dev/) 开发的静态网站。
 
-## Recommended IDE Setup
+### 推荐的 IDE 
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
+那肯定是[WebStorm](https://www.jetbrains.com/help/webstorm/eslint.html)
 
-## Customize configuration
-
-See [Vite Configuration Reference](https://vite.dev/config/).
-
-## Project Setup
+### 项目依赖
 
 ```sh
 npm install
 ```
 
-### Compile and Hot-Reload for Development
+### 项目运行
 
 ```sh
 npm run dev
 ```
 
-### Compile and Minify for Production
+### 项目打包
 
 ```sh
 npm run build
