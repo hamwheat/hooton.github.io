@@ -2,7 +2,7 @@
  # @Author: yang
  # @Date: 2024-12-31 15:39:27
  # @LastEditors: yang
- # @LastEditTime: 2024-12-31 15:42:25
+ # @LastEditTime: 2024-12-31 15:47:14
  # @Description: 部署到 GitHub Pages
 ###
 
@@ -24,7 +24,7 @@ jobs:
       - name: Set up Node.js  # 设置 Node.js 环境
         uses: actions/setup-node@v3
         with:
-          node-version: '18'  # 使用 Node.js 版本 18
+          node-version: '20'  # 使用 Node.js 版本 20
 
       - name: Install dependencies  # 安装依赖
         run: npm install
