@@ -1,0 +1,39 @@
+###
+ # @Author: yang
+ # @Date: 2024-12-31 15:39:27
+ # @LastEditors: yang
+ # @LastEditTime: 2024-12-31 15:40:43
+ # @Description: 部署到 GitHub Pages
+###
+
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main  # 触发条件：当推送到 main 分支时触发
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest  # 使用最新的 Ubuntu 运行环境
+
+    steps:
+      - name: Checkout repository  # 检出代码库
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js  # 设置 Node.js 环境
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'  # 使用 Node.js 版本 18
+
+      - name: Install dependencies  # 安装依赖
+        run: npm install
+
+      - name: Build project  # 构建项目
+        run: npm run build
+
+      - name: Deploy to GitHub Pages  # 部署到 GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}  # 使用 GitHub 提供的令牌
+          publish_dir: ./dist  # 发布目录为 dist
