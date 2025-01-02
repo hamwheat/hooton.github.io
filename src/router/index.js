@@ -11,7 +11,7 @@ const router = createRouter({
         {
             path: '/home',
             name: '首页',
-            component: () => import('../pages/home.vue'),
+            component: () => import('../pages/Home.vue'),
         }
     ]
 })

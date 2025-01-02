@@ -1,0 +1,106 @@
+<!--
+ * @Author: yang
+ * @Date: 2025-01-02 16:45:06
+ * @LastEditors: yang
+ * @LastEditTime: 2025-01-02 17:20:30
+ * @Description: 
+ -->
+<template>
+  <label for="switch" class="switch" @click="toggleTheme">
+    <input id="switch" type="checkbox" :checked="isDarkTheme"/>
+    <span class="slider"></span>
+    <span class="decoration"></span>
+  </label>
+</template>
+
+<script setup>
+import { useThemeStore } from '@/stores/themeStore.js';
+
+const themeStore = useThemeStore();
+const { isDarkTheme, toggleTheme } = themeStore;
+</script>
+
+<style scoped>
+/* 开关 - 滑块周围的框 */
+.switch {
+  font-size: 17px;
+  position: relative;
+  display: inline-block;
+  width: 3.5em;
+  height: 2em;
+  cursor: pointer;
+}
+
+/* 隐藏HTML默认输入框 */
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* 滑块 */
+.slider {
+  --background: #20262c;
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: var(--background);
+  transition: 0.5s;
+  border-radius: 30px;
+}
+
+/* 滑块的圆圈 */
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 1.4em;
+  width: 1.4em;
+  border-radius: 50%;
+  left: 10%;
+  bottom: 15%;
+  box-shadow: inset 8px -4px 0px 0px #ececd9, -4px 1px 4px 0px #dadada;
+  background: var(--background);
+  transition: 0.5s;
+}
+
+/* 圆圈装饰 */
+.decoration {
+  position: absolute;
+  content: "";
+  height: 2px;
+  width: 2px;
+  border-radius: 50%;
+  right: 20%;
+  top: 15%;
+  background: #e5f041e6;
+  backdrop-filter: blur(10px);
+  transition: all 0.5s;
+  box-shadow: -7px 10px 0 #e5f041e6, 8px 15px 0 #e5f041e6, -17px 1px 0 #e5f041e6,
+  -20px 10px 0 #e5f041e6, -7px 23px 0 #e5f041e6, -15px 25px 0 #e5f041e6;
+}
+
+/* 鼠标点击时滑块装饰位置 */
+input:checked ~ .decoration {
+  transform: translateX(-20px);
+  width: 10px;
+  height: 10px;
+  background: white;
+  box-shadow: -12px 0 0 white, -6px 0 0 1.6px white, 5px 15px 0 1px white,
+  1px 17px 0 white, 10px 17px 0 white;
+}
+
+/* 鼠标点击时滑块颜色 */
+input:checked + .slider {
+  background-color: #5494de;
+}
+
+/* 鼠标点击时滑块位置 */
+input:checked + .slider:before {
+  transform: translateX(100%);
+  box-shadow: inset 15px -4px 0px 15px #efdf2b, 0 0 10px 0px #efdf2b;
+}
+</style>
+   
