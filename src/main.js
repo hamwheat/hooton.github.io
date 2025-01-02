@@ -5,6 +5,7 @@ import router from './router/index.js'
 import ElementPlus from "element-plus";
 import zhCn from "element-plus/es/locale/lang/zh-cn";
 import * as ElementPlusIconsVue from '@element-plus/icons-vue'
+import '../src/assets/style/global.css'; // 引入全局样式文件
 
 
 const app = createApp(App)

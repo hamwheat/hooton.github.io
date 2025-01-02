@@ -2,26 +2,30 @@
  * @Author: yang
  * @Date: 2024-12-31 14:41:49
  * @LastEditors: yang
- * @LastEditTime: 2025-01-02 11:03:26
+ * @LastEditTime: 2025-01-02 11:22:01
  * @Description: 
  -->
 <template>
-  <header>
+  <header class="header">
     <img alt="Vue logo" class="logo" src="../assets/logo.svg" width="125" height="125" />
-    <button @click="toggleTheme" class="theme-toggle">Toggle Theme</button>
-    <div class="wrapper">
-      <HelloWorld msg="Welcome to My Personal Website!" />
+    <button @click="toggleTheme" class="theme-toggle">切换主题</button>
+    <div class="greeting">
+      <HelloWorld msg="欢迎！" />
     </div>
   </header>
 
-  <main>
-    <section class="content">
-      <h1>About Me</h1>
-      <p>This is a brief introduction about myself.</p>
+  <main class="main-content">
+    <section class="content about">
+      <h1>关于我</h1>
+      <p>
+        大家好！
+      </p>
     </section>
-    <section class="content">
-      <h1>Projects</h1>
-      <p>Here are some of my projects.</p>
+    <section class="content projects">
+      <h1>项目</h1>
+      <p>
+        这里是
+      </p>
     </section>
   </main>
 </template>
@@ -44,111 +48,122 @@ onMounted(() => {
   if (savedTheme === 'dark') {
     isDarkTheme.value = true;
     document.documentElement.setAttribute('data-theme', 'dark');
+  } else {
+    isDarkTheme.value = false;
+    document.documentElement.setAttribute('data-theme', 'light');
   }
 });
 </script>
 
 <style scoped>
-:root {
-  --background-color: #ffffff;
-  --text-color: #000000;
-  --primary-color: #42b983;
-}
-
-[data-theme="dark"] {
-  --background-color: #121212;
-  --text-color: #ffffff;
-  --primary-color: #4caf50;
-}
-
-body {
-  background-color: var(--background-color);
-  color: var(--text-color);
-  font-family: Arial, sans-serif;
-  margin: 0;
-  padding: 0;
-}
-
-header {
-  text-align: center;
-  padding: 1rem;
+.header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
   background-color: var(--primary-color);
+  color: var(--secondary-color);
+  text-align: center;
 }
 
 .logo {
   margin-bottom: 1rem;
+  transition: transform 0.3s ease;
+}
+
+.logo:hover {
+  transform: scale(1.1);
 }
 
 .theme-toggle {
   background-color: transparent;
   border: none;
-  color: var(--text-color);
+  color: var(--secondary-color);
   font-size: 1rem;
   cursor: pointer;
-  margin-bottom: 1rem;
+  margin-top: 1rem;
+  transition: color 0.3s ease;
 }
 
 .theme-toggle:hover {
-  text-decoration: underline;
+  color: var(--accent-color);
 }
 
-.wrapper {
-  margin-bottom: 1rem;
+.greeting {
+  margin-top: 1rem;
 }
 
-main {
-  padding: 1rem;
+.main-content {
+  padding: 2rem;
+  background-color: var(--secondary-color);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .content {
+  max-width: 800px;
+  width: 100%;
   margin-bottom: 2rem;
+  background-color: var(--background-color);
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease;
+}
+
+.content:hover {
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 
 .content h1 {
   color: var(--primary-color);
+  margin-bottom: 1rem;
+}
+
+.content p {
+  line-height: 1.6;
 }
 
 @media (min-width: 768px) {
-  header {
-    display: flex;
-    flex-direction: column;
+  .header {
+    flex-direction: row;
+    justify-content: space-between;
     align-items: center;
   }
 
-  .theme-toggle {
-    margin-bottom: 0;
-    margin-top: 1rem;
+  .greeting {
+    margin-top: 0;
   }
 
-  .wrapper {
-    margin-bottom: 2rem;
-  }
-
-  main {
-    display: flex;
+  .main-content {
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: space-around;
   }
 
   .content {
-    flex: 1;
-    margin: 0 1rem;
+    margin-bottom: 0;
+    margin-right: 1rem;
+    margin-left: 1rem;
+  }
+
+  .content:last-child {
+    margin-right: 0;
   }
 }
 
 @media (min-width: 1024px) {
-  header {
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
+  .header {
+    padding: 3rem;
   }
 
-  .theme-toggle {
-    margin-left: 1rem;
+  .main-content {
+    padding: 3rem;
   }
 
-  .wrapper {
-    margin-left: 1rem;
+  .content {
+    padding: 3rem;
   }
 }
 </style>
