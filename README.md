@@ -2,9 +2,7 @@
 
 这是一个基于 [Vue.js](https://vuejs.org/) + [Vite](https://vitejs.dev/) 开发的静态网站。
 
-### 推荐的 IDE 
-
-那肯定是[WebStorm](https://www.jetbrains.com/help/webstorm/eslint.html)
+点击查看→ [在线演示](https://hamwheat.github.io/hooton.github.io/)
 
 ### 项目依赖
 
