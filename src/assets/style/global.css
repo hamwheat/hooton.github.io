@@ -2,7 +2,7 @@
  * @Author: yang
  * @Date: 2025-01-02 11:20:55
  * @LastEditors: yang
- * @LastEditTime: 2025-01-02 15:55:20
+ * @LastEditTime: 2025-01-03 16:51:00
  * @Description: 全局样式
  */
 
@@ -22,10 +22,17 @@
     --accent-color: #61dafb; /* 更柔和的强调色 */
 }
 
+/* 设置试图过度过程的微元素 */
+::view-transition-new(root),
+::view-transition-old(root) {
+    animation: none; /* 关闭默认动画 */
+}
+
 body {
     background-color: var(--background-color);
     color: var(--text-color);
     font-family: 'Arial', sans-serif;
     margin: 0;
     padding: 0;
+    /*transition: background-color 0.5s ease, color 0.5s ease;*/
 }

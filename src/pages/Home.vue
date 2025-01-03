@@ -2,7 +2,7 @@
  * @Author: yang
  * @Date: 2024-12-31 14:41:49
  * @LastEditors: yang
- * @LastEditTime: 2025-01-02 17:20:30
+ * @LastEditTime: 2025-01-03 17:03:50
  * @Description: 主页
  -->
 <template>
@@ -12,18 +12,7 @@
   </header>
 
   <main class="main-content">
-    <section class="content about">
-      <h1>关于我</h1>
-      <p>
-        大家好！
-      </p>
-    </section>
-    <section class="content projects">
-      <h1>项目</h1>
-      <p>
-        这里是
-      </p>
-    </section>
+    
   </main>
 </template>
 
@@ -131,4 +120,3 @@ onMounted(() => {
   }
 }
 </style>
-   

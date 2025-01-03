@@ -2,58 +2,57 @@
  * @Author: yang
  * @Date: 2025-01-02 16:45:06
  * @LastEditors: yang
- * @LastEditTime: 2025-01-02 17:20:30
+ * @LastEditTime: 2025-01-03 16:53:28
  * @Description: 
  -->
 <template>
-  <label for="switch" class="switch" @click="toggleTheme">
-    <input id="switch" type="checkbox" :checked="isDarkTheme"/>
+  <label class="switch">
+    <input type="checkbox" @change="switchTheme($event)"/>
     <span class="slider"></span>
-    <span class="decoration"></span>
+    <span class="clouds_stars"></span>
   </label>
 </template>
 
 <script setup>
 import { useThemeStore } from '@/stores/themeStore.js';
-
 const themeStore = useThemeStore();
-const { isDarkTheme, toggleTheme } = themeStore;
+const { isDarkTheme, switchTheme } = themeStore;
+
 </script>
 
 <style scoped>
-/* 开关 - 滑块周围的框 */
 .switch {
+  /* border: 2px solid rebeccapurple; */
   font-size: 17px;
   position: relative;
   display: inline-block;
   width: 3.5em;
   height: 2em;
-  cursor: pointer;
 }
-
-/* 隐藏HTML默认输入框 */
 .switch input {
+  /* all: unset; */
   opacity: 0;
   width: 0;
   height: 0;
 }
-
-/* 滑块 */
 .slider {
-  --background: #20262c;
+  background-color: #2185d6;
   position: absolute;
-  cursor: pointer;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: var(--background);
-  transition: 0.5s;
+  cursor: pointer;
+  transition: 0.4s;
   border-radius: 30px;
+  box-shadow: 0 0 0 rgba(33, 133, 214, 0);
+  transition: all 0.4s ease;
+}
+.slider:hover {
+  box-shadow: 0 0 15px rgba(33, 133, 214, 0.5);
 }
 
-/* 滑块的圆圈 */
-.slider:before {
+.slider::before {
   position: absolute;
   content: "";
   height: 1.4em;
@@ -61,46 +60,71 @@ const { isDarkTheme, toggleTheme } = themeStore;
   border-radius: 50%;
   left: 10%;
   bottom: 15%;
-  box-shadow: inset 8px -4px 0px 0px #ececd9, -4px 1px 4px 0px #dadada;
-  background: var(--background);
-  transition: 0.5s;
+  box-shadow: inset 15px -4px 0px 15px #fdf906;
+  background-color: #28096b;
+  transition: all 0.4s ease;
+  transform-origin: center;
 }
-
-/* 圆圈装饰 */
-.decoration {
+.slider:hover::before {
+  transform: rotate(45deg);
+}
+.clouds_stars {
   position: absolute;
   content: "";
+  border-radius: 50%;
+  height: 10px;
+  width: 10px;
+  left: 70%;
+  bottom: 50%;
+  background-color: #fff;
+
+  transition: all 0.3s;
+  box-shadow:
+      -12px 0 0 0 white,
+      -6px 0 0 1.6px white,
+      0.3px 16px 0 white,
+      -6.5px 16px 0 white;
+  filter: blur(0.55px);
+}
+.switch input:checked ~ .clouds_stars {
+  transform: translateX(-20px);
   height: 2px;
   width: 2px;
   border-radius: 50%;
-  right: 20%;
+  left: 80%;
   top: 15%;
-  background: #e5f041e6;
+  background-color: #fff;
   backdrop-filter: blur(10px);
-  transition: all 0.5s;
-  box-shadow: -7px 10px 0 #e5f041e6, 8px 15px 0 #e5f041e6, -17px 1px 0 #e5f041e6,
-  -20px 10px 0 #e5f041e6, -7px 23px 0 #e5f041e6, -15px 25px 0 #e5f041e6;
+  transition: all 0.3s;
+  box-shadow:
+      -7px 10px 0 #fff,
+      8px 15px 0 #fff,
+      -17px 1px 0 #fff,
+      -20px 10px 0 #fff,
+      -7px 23px 0 #fff,
+      -15px 25px 0 #fff;
+  filter: none;
+  animation: twinkle 2s infinite;
 }
-
-/* 鼠标点击时滑块装饰位置 */
-input:checked ~ .decoration {
-  transform: translateX(-20px);
-  width: 10px;
-  height: 10px;
-  background: white;
-  box-shadow: -12px 0 0 white, -6px 0 0 1.6px white, 5px 15px 0 1px white,
-  1px 17px 0 white, 10px 17px 0 white;
+.switch input:checked + .slider {
+  background-color: #28096b !important;
 }
-
-/* 鼠标点击时滑块颜色 */
-input:checked + .slider {
-  background-color: #5494de;
-}
-
-/* 鼠标点击时滑块位置 */
-input:checked + .slider:before {
+.switch input:checked + .slider::before {
   transform: translateX(100%);
-  box-shadow: inset 15px -4px 0px 15px #efdf2b, 0 0 10px 0px #efdf2b;
+  box-shadow: inset 8px -4px 0 0 #fff;
 }
+.switch input:checked + .slider:hover::before {
+  transform: translateX(100%) rotate(-45deg);
+}
+@keyframes twinkle {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
 </style>
    
