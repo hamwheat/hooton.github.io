@@ -2,7 +2,7 @@
  * @Author: yang
  * @Date: 2025-01-02 11:20:55
  * @LastEditors: yang
- * @LastEditTime: 2025-01-03 16:51:00
+ * @LastEditTime: 2025-01-04 14:25:34
  * @Description: 全局样式
  */
 
@@ -13,8 +13,7 @@
     --secondary-color: #f0f2f5; /* Element Plus 次要背景色 */
     --accent-color: #67c23a; /* Element Plus 成功色 */
 }
-
-[data-theme="dark"] {
+:root.dark {
     --background-color: #2b2b2b; /* 更柔和的深色背景 */
     --text-color: #d4d4d4; /* 更柔和的文字颜色 */
     --primary-color: #61dafb; /* 更柔和的主色调 */
@@ -25,7 +24,8 @@
 /* 设置试图过度过程的微元素 */
 ::view-transition-new(root),
 ::view-transition-old(root) {
-    animation: none; /* 关闭默认动画 */
+    /* 关闭默认动画 */
+    animation: none;
 }
 
 body {

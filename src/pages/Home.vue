@@ -2,52 +2,24 @@
  * @Author: yang
  * @Date: 2024-12-31 14:41:49
  * @LastEditors: yang
- * @LastEditTime: 2025-01-03 17:03:50
+ * @LastEditTime: 2025-01-04 09:23:19
  * @Description: 主页
  -->
 <template>
-  <header class="header">
-    <img alt="Logo" class="logo animate__animated animate__flip" src="../assets/images/logo.jpg" width="55" height="55" />
-    <ThemeToggle />
-  </header>
-
-  <main class="main-content">
-    
-  </main>
+  
 </template>
 
 <script setup>
 import { onMounted } from 'vue';
-import ThemeToggle from "@/components/toggle/ThemeToggle.vue";
-import { useThemeStore } from '@/stores/themeStore.js';
 
-const themeStore = useThemeStore();
 
 onMounted(() => {
-  // 从localStorage加载主题设置
-  const savedTheme = localStorage.getItem('theme');
-  if (savedTheme === 'dark') {
-    themeStore.setTheme(true);
-  } else {
-    themeStore.setTheme(false);
-  }
+  
 });
 </script>
 
 <style scoped>
-.header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  height: 60px;
-  background-color: var(--primary-color);
-  color: var(--secondary-color);
-}
 
-.logo {
-  border-radius: 50%;
-  transition: transform 0.3s ease;
-}
 
 .main-content {
   padding: 24px;
