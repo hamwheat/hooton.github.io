@@ -2,12 +2,12 @@
  * @Author: yang
  * @Date: 2025-01-02 16:45:06
  * @LastEditors: yang
- * @LastEditTime: 2025-01-04 14:45:59
+ * @LastEditTime: 2025-01-04 17:20:54
  * @Description: 
  -->
 <template>
   <label id="theme-toggle" class="switch">
-    <input type="checkbox" @click="switchThemeClick($event)"/>
+    <input id="theme-toggle-checkbox" type="checkbox" @click="switchThemeClick($event)"/>
     <span class="slider"></span>
     <span class="clouds_stars"></span>
   </label>
@@ -50,11 +50,12 @@ function switchThemeClick(event) {
   border-radius: 30px;
   transition: all 0.4s ease;
   background-color: #2185d6;
+  border: 1px var(--border-color);
   box-shadow: 0 0 0 rgba(33, 133, 214, 0);
 }
 /* 移入滑块 */
 .slider:hover {
-  box-shadow: 0 0 15px rgba(33, 133, 214, 0.5);
+  //box-shadow: 0 0 15px rgba(33, 133, 214, 0.5);
 }
 
 /* 滑块的园(默认为太阳，checked为月亮) */
@@ -68,7 +69,7 @@ function switchThemeClick(event) {
   border-radius: 50%;
   transform-origin: center;
   transition: all 0.4s ease;
-  background-color: #28096b;
+  background-color: #1d1f2c;
   box-shadow: inset 15px -4px 0 15px #fdf906;
 }
 /* 滑块移入 */
@@ -118,7 +119,7 @@ function switchThemeClick(event) {
 }
 /* checked改变背景色 */
 .switch input:checked + .slider {
-  background-color: #28096b !important;
+  background-color: #1d1f2c !important;
 }
 /* 月亮在checked过程中右移 */
 .switch input:checked + .slider::before {

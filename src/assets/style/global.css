@@ -2,7 +2,7 @@
  * @Author: yang
  * @Date: 2025-01-02 11:20:55
  * @LastEditors: yang
- * @LastEditTime: 2025-01-04 14:25:34
+ * @LastEditTime: 2025-01-04 16:31:06
  * @Description: 全局样式
  */
 
@@ -12,6 +12,9 @@
     --primary-color: #409eff; /* Element Plus 主色调 */
     --secondary-color: #f0f2f5; /* Element Plus 次要背景色 */
     --accent-color: #67c23a; /* Element Plus 成功色 */
+    --border-color: #dcdfe6; /* Element Plus 边框颜色 */
+    --nav-height: 64px; /* 导航栏高度 */
+    --nav-z-index: 12; /* 导航栏的z-index */
 }
 :root.dark {
     --background-color: #2b2b2b; /* 更柔和的深色背景 */
@@ -19,6 +22,9 @@
     --primary-color: #61dafb; /* 更柔和的主色调 */
     --secondary-color: #3a3a3a; /* 更柔和的次要背景色 */
     --accent-color: #61dafb; /* 更柔和的强调色 */
+    --border-color: #4c4d4f; /* Element Plus 边框颜色 */
+    --nav-height: 64px; /* 导航栏高度 */
+    --nav-z-index: 12; /* 导航栏的z-index */
 }
 
 /* 设置试图过度过程的微元素 */

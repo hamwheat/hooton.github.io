@@ -1,16 +1,19 @@
 <template>
-  <header class="nav-bar">
-    <img alt="Logo" class="logo animate__animated animate__flip" src="./assets/images/logo.jpg" width="55" height="55" />
-    <ThemeToggle @switchThemeClick="switchThemeClick"/>
+  <header class="navbar">
+    <div class="navbar-wrapper">
+      <img alt="Logo" class="logo animate__animated animate__flip" src="./assets/images/logo.jpg" width="40"
+           height="40"/>
+      <ThemeToggle @switchThemeClick="switchThemeClick"/>
+    </div>
   </header>
-  <router-view/>
+  <main class="page-content">
+    <router-view/>
+  </main>
 </template>
+
 <script setup>
 import ThemeToggle from "@/components/toggle/ThemeToggle.vue";
 import {onMounted} from "vue";
-// import { useThemeStore } from '@/stores/themeStore.js';
-// const themeStore = useThemeStore();
-// const { setTheme } = themeStore;
 
 /**
  * 主题切换按钮子组件抛出的点击事件
@@ -23,12 +26,11 @@ function switchThemeClick(e) {
     document.documentElement.classList.toggle("dark");
     // 保存主题设置
     localStorage.setItem('theme', document.documentElement.classList.contains('dark') ? 'dark' : 'light');
-    // setTheme(document.documentElement.classList.contains("dark"));
   });
   // startViewTransition返回一个Promise对象，表示动画的开始
   transition.ready.then(() => {
     // 获取点击事件的坐标
-    const { clientX, clientY } = e;
+    const {clientX, clientY} = e;
     // 计算最大半径
     const radius = Math.hypot(
         Math.max(clientX, innerWidth - clientX),
@@ -54,39 +56,78 @@ function switchThemeClick(e) {
 
 onMounted(() => {
   // 从localStorage加载主题设置
-  const savedTheme = localStorage.getItem('theme');
-  const toggleElement = document.getElementById('theme-toggle')
+  const savedTheme = localStorage.getItem('theme'); // 获取本地存储的主题设置
+  const toggleElement = document.getElementById('theme-toggle')  // 获取主题切换按钮的元素
+  const toggleInputElement = document.getElementById('theme-toggle-checkbox') // 获取主题切换按钮的输入元素
   switch (savedTheme) {
     case 'dark':
       document.documentElement.classList.add('dark');
+      toggleInputElement.checked = true;
       break;
     case 'light':
       document.documentElement.classList.remove('dark');
+      toggleInputElement.checked = false;
       break;
     default:
       // 如果没有设置主题，则根据系统主题设置
       if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
         document.documentElement.classList.add('dark');
+        toggleInputElement.checked = true;
       } else {
         document.documentElement.classList.remove('dark');
+        toggleInputElement.checked = false;
       }
-   }
+  }
 })
 </script>
 
-<style>
-.nav-bar {
-  height: 60px;
+<style lang="scss" scoped>
+.navbar {
+  top: 0;
+  left: 0;
+  width: 100%;
+  position: sticky;
+  height: var(--nav-height);
+  z-index: var(--nav-z-index);
+}
+
+.navbar-wrapper {
+  height: 100%;
   display: flex;
   align-items: center;
   color: var(--secondary-color);
   justify-content: space-between;
-  background-color: var(--primary-color);
+  border-bottom: 1px solid var(--border-color);
+  /* 毛玻璃效果 */
+  background-size: 4px 4px;
+  backdrop-filter: saturate(50%) blur(4px);
+  -webkit-backdrop-filter: saturate(50%) blur(4px);
+  background-image: radial-gradient(transparent 1px, var(--background-color) 1px);
+}
+
+.page-content {
+  padding-top: var(--nav-height); /* 确保内容不被导航栏遮挡 */
 }
 
 .logo {
   border-radius: 50%;
-  transition: transform 0.3s ease;
+}
+
+@media screen and (min-width: 1680px) {
+  .navbar-wrapper {
+    padding: 0 48px;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .navbar-wrapper {
+    padding: 0 32px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .navbar-wrapper {
+    padding: 0 12px 0 32px;
+  }
 }
 </style>
-
