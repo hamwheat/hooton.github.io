@@ -2,29 +2,46 @@
  * @Author: yang
  * @Date: 2025-01-02 11:20:55
  * @LastEditors: yang
- * @LastEditTime: 2025-01-07 16:33:33
+ * @LastEditTime: 2025-01-08 16:24:09
  * @Description: 全局样式
  */
 
 :root {
-    --background-color: #f0f2f5; /* Element Plus 背景色 */
-    --text-color: #303133; /* Element Plus 文字颜色 */
-    --primary-color: #409eff; /* Element Plus 主色调 */
-    --secondary-color: #f0f2f5; /* Element Plus 次要背景色 */
-    --accent-color: #67c23a; /* Element Plus 成功色 */
-    --border-color: #dcdfe6; /* Element Plus 边框颜色 */
+    --background-color: #ffffff; /* Light 背景色 */
+    --text-color: #333333; /* Light 文字颜色 */
+    --primary-color: #007acc; /* Light 主色调 */
+    --secondary-color: #f0f0f0; /* Light 次要背景色 */
+    --accent-color: #4caf50; /* Light 成功色 */
+    --border-color: #cccccc; /* Light 边框颜色 */
+    --box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1); /* Light 阴影 */
+
     --nav-height: 64px; /* 导航栏高度 */
     --nav-z-index: 12; /* 导航栏的z-index */
+    --sidebar-z-index: 12; /* 侧边栏的z-index */
+
+    --bg-text-color: #666666; /* 背景文字颜色 */
+    --bg-box-shadow: 0 0 150px -20px rgba(0, 0, 0, 0.5); /* 背景阴影 */
+    --bg-text-shadow: 0 0 50px rgba(0, 0, 0, 0.07); /* 背景文字阴影 */
+
 }
 :root.dark {
-    --background-color: #2b2b2b; /* 更柔和的深色背景 */
-    --text-color: #d4d4d4; /* 更柔和的文字颜色 */
-    --primary-color: #61dafb; /* 更柔和的主色调 */
-    --secondary-color: #3a3a3a; /* 更柔和的次要背景色 */
-    --accent-color: #61dafb; /* 更柔和的强调色 */
-    --border-color: #4c4d4f; /* Element Plus 边框颜色 */
+    --background-color: #282c34; /* Darcula 背景色 */
+    --vic-background-color: #1e2026;
+    --text-color: #abb2bf; /* Darcula 文字颜色 */
+    --primary-color: #61dafb; /* Darcula 主色调 */
+    --secondary-color: #1e2026; /* Darcula 次要背景色 */
+    --accent-color: #98c379; /* Darcula 成功色 */
+    --border-color: #44475a; /* Darcula 边框颜色 */
+    --box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1); /* Darcula 阴影 */
+
     --nav-height: 64px; /* 导航栏高度 */
     --nav-z-index: 12; /* 导航栏的z-index */
+    --sidebar-z-index: 12; /* 侧边栏的z-index */
+
+    --bg-text-color: #ffffff26; /* 背景文字颜色 */
+    --bg-box-shadow: 0 0 150px -20px rgba(0, 0, 0, 0.5); /* 背景阴影 */
+    --bg-text-shadow: 0 0 50px rgba(0, 0, 0, 0.07); /* 背景文字阴影 */
+
 }
 
 /* 设置试图过度过程的微元素 */

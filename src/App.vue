@@ -1,13 +1,25 @@
 <template>
+  <!-- 导航栏 -->
   <header class="navbar">
     <div class="navbar-wrapper">
-      <div class="navbar-brand">
+      <div class="navbar-left">
         <img alt="Logo" class="logo" src="./assets/images/logo.jpg" width="40"
-             height="40"/>
-        <SideBarToggle />
+             height="40" @click="logoClick"/>
       </div>
-
-      <ThemeToggle @switchThemeClick="switchThemeClick"/>
+      <div class="navbar-right">
+        <ul class="navbar-tabs">
+          <li>
+            <a href="javascript:void(0)" @click="tabClick" v-text="'<Main />'"></a>
+          </li>
+          <li>
+            <a href="javascript:void(0)" @click="tabClick" v-text="'<Blog />'"></a>
+          </li>
+          <li>
+            <a href="javascript:void(0)" @click="tabClick" v-text="'<CodeSpace />'"></a>
+          </li>
+        </ul>
+        <ThemeToggle @switchThemeClick="switchThemeClick"/>
+      </div>
     </div>
   </header>
   <main class="page-content">
@@ -18,7 +30,17 @@
 <script setup>
 import ThemeToggle from "@/components/toggle/ThemeToggle.vue";
 import SideBarToggle from "@/components/toggle/SideBarToggle.vue";
-import {onMounted} from "vue";
+import {ref, onMounted} from "vue";
+import router from "@/router/index.js";
+import {useRoute} from "vue-router";
+
+function logoClick() {
+  router.push('/')
+}
+
+function tabClick() {
+  router.push('/')
+}
 
 /**
  * 主题切换按钮子组件抛出的点击事件
@@ -66,10 +88,31 @@ function switchThemeClick(e) {
   }
 }
 
+/**
+ * 根据路由判断哪个tab被选中
+ */
+function checkTabActive() {
+  const route = useRoute();
+  console.log('route.name', route.name);
+  switch (route.name) {
+    case 'main':
+      document.querySelector('.navbar-tabs li a').classList.add('active');
+      break;
+    case 'blog':
+      document.querySelector('.navbar-tabs li a:nth-child(2)').classList.add('active');
+      break;
+    case 'codespace':
+      document.querySelector('.navbar-tabs li a:nth-child(3)').classList.add('active');
+      break;
+    default:
+      document.querySelector('.navbar-tabs li a').classList.add('active');
+      break;
+  }
+}
+
 onMounted(() => {
   // 从localStorage加载主题设置
   const savedTheme = localStorage.getItem('theme'); // 获取本地存储的主题设置
-  const toggleElement = document.getElementById('theme-toggle')  // 获取主题切换按钮的元素
   const toggleInputElement = document.getElementById('theme-toggle-checkbox') // 获取主题切换按钮的输入元素
   switch (savedTheme) {
     case 'dark':
@@ -90,32 +133,40 @@ onMounted(() => {
         toggleInputElement.checked = false;
       }
   }
+  checkTabActive();
 })
 </script>
 
 <style lang="scss" scoped>
 .navbar {
+  position: sticky;
   top: 0;
   left: 0;
   width: 100%;
-  position: sticky;
-  height: var(--nav-height);
+  height: 100px;
   z-index: var(--nav-z-index);
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
 }
 
 .navbar-wrapper {
-  height: 100%;
+  height: var(--nav-height);
+  width: 80%;
+  padding: 0 20px;
   display: flex;
   align-items: center;
-  color: var(--secondary-color);
   justify-content: space-between;
-  border-bottom: 1px solid var(--border-color);
+  color: var(--secondary-color);
+  border: 1px solid var(--border-color);
+  border-radius: 50px;
   /* 毛玻璃效果 */
   background-size: 4px 4px;
   backdrop-filter: saturate(50%) blur(4px);
   -webkit-backdrop-filter: saturate(50%) blur(4px);
-  background-image: radial-gradient(transparent 1px, var(--background-color) 1px);
+  background-image: radial-gradient(transparent 1px, var(--secondary-color) 1px);
 }
+
 .logo {
   border-radius: 50%;
   margin-right: 12px;
@@ -124,30 +175,70 @@ onMounted(() => {
     animation: flip 0.5s;
   }
 }
-.navbar-brand {
+
+.navbar-left {
   display: flex;
   align-items: center;
 }
 
+.navbar-right {
+  display: flex;
+  align-items: center;
+}
+
+.navbar-tabs {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  list-style: none;
+  padding: 0;
+  margin: 0 48px;
+  font-size: 18px;
+
+  li {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+
+    a {
+      margin: 0 24px;
+      color: var(--text-color);
+      text-decoration-line: none;
+
+      &:hover {
+        color: var(--primary-color);
+        transition: color 0.3s ease;
+      }
+    }
+    &.active {
+      a {
+        color: var(--primary-color);
+      }
+    }
+  }
+}
+
 .page-content {
-  padding-top: var(--nav-height); /* 确保内容不被导航栏遮挡 */
+  transition: margin-left 0.3s ease;
 }
 
 @media screen and (min-width: 1680px) {
   .navbar-wrapper {
-    padding: 0 48px;
+    padding: 0 48px !important;
   }
 }
 
 @media screen and (min-width: 1280px) {
   .navbar-wrapper {
-    padding: 0 32px;
+    padding: 0 32px !important;
   }
 }
 
 @media screen and (min-width: 768px) {
   .navbar-wrapper {
-    padding: 0 12px 0 32px;
+    padding: 0 32px !important;
   }
 }
 </style>

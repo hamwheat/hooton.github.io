@@ -2,11 +2,11 @@
  * @Author: yang
  * @Date: 2025-01-04 18:21:13
  * @LastEditors: yang
- * @LastEditTime: 2025-01-04 20:31:55
+ * @LastEditTime: 2025-01-08 13:24:09
  * @Description: 侧面菜单滑块
  -->
 <template>
-  <input type="checkbox" class="check" id="check" />
+  <input type="checkbox" class="check" id="check" @click="sideBarClick" />
   <label for="check" class="side-bar-toggle">
     <span class="line1"></span>
     <span class="line2"></span>
@@ -15,7 +15,11 @@
 </template>
 
 <script setup>
+const emit = defineEmits(['sideBarClick'])
 
+function sideBarClick(){
+  emit('sideBarClick')
+}
 </script>
 
 <style scoped>

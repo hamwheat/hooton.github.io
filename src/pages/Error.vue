@@ -2,21 +2,23 @@
  * @Author: yang
  * @Date: 2025-01-07 14:35:25
  * @LastEditors: yang
- * @LastEditTime: 2025-01-08 09:21:19
+ * @LastEditTime: 2025-01-08 16:34:33
  * @Description: 错误页面
  -->
 <template>
-  <h1>{{ 403 }}</h1>
+  <h1>{{ 404 }}</h1>
   <div ref="errorMessage">
-    <p>> <span>错误代码</span>: "<i>HTTP 403 Forbidden</i>"</p>
-    <p>> <span>错误描述</span>: "<i>访问被拒绝，您无权在此服务器上访问此页面</i>"</p>
-    <p>> <span>错误可能由以下原因引起</span>: [<b>禁止执行访问、禁止读取访问、禁止写入访问、需要 SSL、需要 SSL 128、IP 地址被拒绝、需要客户端证书、站点访问被拒绝、用户过多、配置无效、密码更改、映射器拒绝访问、客户端证书被吊销、目录列表被拒绝、超出客户端访问许可证、客户端证书不受信任或无效、客户端证书已过期或尚未有效、 Passport 登录失败，源访问被拒绝，无限深度被拒绝，来自同一客户端 IP 的请求过多 </b>...]</p>
-    <p>> <span>此服务器上您有权访问的某些页面</span>: [<a href="/">主页</a>, <a href="/">关于我们</a>, <a href="/">联系我们</a>, <a href="/">博客</a>...]</p>
-    <p>> <span>请尝试以下操作</span>: [<a href="/">返回首页</a>, <a href="/">返回上一页</a>, <a href="/">刷新页面</a>, <a href="/">联系我们</a>...]</p>
+    <p>> <span>错误代码</span>: "HTTP 404 Not Found"</p>
+    <p>> <span>错误描述</span>: "您请求的页面不存在或已删除"</p>
+    <p>> <span>错误可能由以下原因引起</span>: [<b>‌原始URL失效‌、</b><b>‌文件目录或名称更改、</b><b>文件迁移或删除、</b><b>地址输入错误、</b><b>服务器不稳定‌</b>...]</p>
+    <p>> <span>此服务器上您有权访问的页面包括</span>: [<a href="/">主页</a>, <a href="/about">关于我们</a>, <a
+        href="/contact">联系我们</a>, <a href="/blog">博客</a>...]</p>
+    <p>> <span>请尝试以下操作</span>: [<a href="/">返回首页</a>, <a href="javascript:history.back()">返回上一页</a>, <a
+        href="/">刷新页面</a>, <a href="/contact">联系我们</a>...]</p>
   </div>
 </template>
 <script setup>
-import { ref, onMounted } from 'vue';
+import {ref, onMounted} from 'vue';
 
 const props = defineProps({
   statusCode: String
@@ -32,17 +34,15 @@ onMounted(() => {
   /**
    * 模拟打字机效果
    */
-  setTimeout(function() {
-    let se = setInterval(function() {
-      console.log(str.slice(0, i))
-      i++;
-      errorMessage.value.innerHTML = str.slice(0, i) + "|"; // 添加一个竖线
-      if (i === str.length) {
-        clearInterval(se);
-        errorMessage.value.innerHTML = str;
-      }
-    }, 10);
-  }, 0);
+  let se = setInterval(function () {
+    console.log(str.slice(0, i))
+    i++;
+    errorMessage.value.innerHTML = str.slice(0, i) + "|"; // 添加一个竖线
+    if (i === str.length) {
+      clearInterval(se);
+      errorMessage.value.innerHTML = str;
+    }
+  }, 12);
 });
 </script>
 <style scoped>
@@ -55,8 +55,8 @@ h1 {
   position: fixed;
   width: 100vw;
   z-index: 1;
-  color: #ffffff26;
-  text-shadow: 0 0 50px rgba(0, 0, 0, 0.07);
+  color: var(--bg-text-color);
+  text-shadow: var(--bg-text-shadow);
   top: 50%;
   transform: translateY(-50%);
   font-family: "Montserrat", monospace;
@@ -67,33 +67,35 @@ div {
   width: 70vw;
   position: relative;
   top: 50%;
-  margin: 0 auto;
   padding: 30px 30px 10px;
-  box-shadow: 0 0 150px -20px rgba(0, 0, 0, 0.5);
+  margin: var(--nav-height) auto 0;
+  box-shadow: var(--bg-box-shadow);
   z-index: 3;
 }
 
 P {
   font-family: "Share Tech Mono", monospace;
-  color: #f5f5f5;
+  color: var(--text-color);
   margin: 0 0 20px;
   font-size: 17px;
+  font-weight: bold;
   line-height: 2.2;
 }
 
 span {
-  color: #f0c674;
+  color: var(--accent-color);
+  font-weight: bold;
 }
 
 i {
-  color: #8abeb7;
+  color: var(--text-color);
 }
 
 div a {
-  color: #81a2be;
+  color: var(--primary-color);
 }
 
 b {
-  color: #81a2be;
+  color: var(--primary-color);
 }
 </style>

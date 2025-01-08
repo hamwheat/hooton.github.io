@@ -2,7 +2,7 @@
  * @Author: yang
  * @Date: 2025-01-02 16:45:06
  * @LastEditors: yang
- * @LastEditTime: 2025-01-04 18:27:51
+ * @LastEditTime: 2025-01-08 16:26:25
  * @Description: 主题切换滑块
  -->
 <template>
@@ -118,7 +118,7 @@ function switchThemeClick(event) {
 
 /* checked改变背景色 */
 .switch input:checked + .slider {
-  background-color: #1d1f2c !important;
+  background-color: #1e1e1e !important;
 }
 
 /* 月亮在checked过程中右移 */
