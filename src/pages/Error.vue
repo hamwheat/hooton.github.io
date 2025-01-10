@@ -2,7 +2,7 @@
  * @Author: yang
  * @Date: 2025-01-07 14:35:25
  * @LastEditors: yang
- * @LastEditTime: 2025-01-08 16:34:33
+ * @LastEditTime: 2025-01-10 13:25:46
  * @Description: 错误页面
  -->
 <template>
@@ -58,13 +58,12 @@ h1 {
   color: var(--bg-text-color);
   text-shadow: var(--bg-text-shadow);
   top: 50%;
-  transform: translateY(-50%);
+  transform: translateY(-50%) translateX(-20%);
   font-family: "Montserrat", monospace;
 }
 
 div {
   background: rgba(0, 0, 0, 0);
-  width: 70vw;
   position: relative;
   top: 50%;
   padding: 30px 30px 10px;

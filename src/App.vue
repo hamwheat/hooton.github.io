@@ -3,22 +3,26 @@
   <header class="navbar">
     <div class="navbar-wrapper">
       <div class="navbar-left">
-        <img alt="Logo" class="logo" src="./assets/images/logo.jpg" width="40"
-             height="40" @click="logoClick"/>
+        一个测试页面
+        <!--        <img alt="Logo" class="logo" src="./assets/images/logo.jpg" width="40"-->
+        <!--             height="40" @click="logoClick"/>-->
       </div>
       <div class="navbar-right">
-        <ul class="navbar-tabs">
-          <li>
+        <ul class="navbar-tabs-pc">
+          <li :class="{ active: activeTab === 'main' }">
             <a href="javascript:void(0)" @click="tabClick" v-text="'<Main />'"></a>
           </li>
-          <li>
+          <li :class="{ active: activeTab === 'blog' }">
             <a href="javascript:void(0)" @click="tabClick" v-text="'<Blog />'"></a>
           </li>
-          <li>
+          <li :class="{ active: activeTab === 'codespace' }">
             <a href="javascript:void(0)" @click="tabClick" v-text="'<CodeSpace />'"></a>
           </li>
         </ul>
         <ThemeToggle @switchThemeClick="switchThemeClick"/>
+        <div class="navbar-tabs-mobile">
+          <SideBarToggle/>
+        </div>
       </div>
     </div>
   </header>
@@ -30,51 +34,56 @@
 <script setup>
 import ThemeToggle from "@/components/toggle/ThemeToggle.vue";
 import SideBarToggle from "@/components/toggle/SideBarToggle.vue";
-import {ref, onMounted} from "vue";
+import {ref, onMounted, watch} from "vue";
 import router from "@/router/index.js";
 import {useRoute} from "vue-router";
 
-function logoClick() {
-  router.push('/')
-}
+const activeTab = ref('main'); // 默认激活的tab
 
-function tabClick() {
-  router.push('/')
+/**
+ * logo点击
+ */
+function logoClick() {
+  router.push('/');
 }
 
 /**
- * 主题切换按钮子组件抛出的点击事件
- * @param e 事件对象(为了获取点击事件的坐标)
+ * tab点击
+ * @param event 事件对象
+ */
+function tabClick(event) {
+  const tabName = event.target.textContent.trim().replace(/<|>/g, '');
+}
+
+/**
+ * 切换主题
+ * @param e 事件对象
  */
 function switchThemeClick(e) {
-  // 如果是pc端
+  // 非移动端，使用视图转换动画
   if (window.innerWidth > 768) {
-    // 执行切换主题的操作
+    // 使用视图转换动画
     const transition = document.startViewTransition(() => {
-      // 动画过渡切换主题色
+      // 切换主题并放到本地存储
       document.documentElement.classList.toggle("dark");
-      // 保存主题设置
       localStorage.setItem('theme', document.documentElement.classList.contains('dark') ? 'dark' : 'light');
     });
-    // startViewTransition返回一个Promise对象，表示动画的开始
+    // 使用视图转换动画的回调函数
     transition.ready.then(() => {
-      // 获取点击事件的坐标
+      // 计算当前坐标并计算最大扩散半径
       const {clientX, clientY} = e;
-      // 计算最大半径
       const radius = Math.hypot(
           Math.max(clientX, innerWidth - clientX),
           Math.max(clientY, innerHeight - clientY)
       );
-      // 圆形扩散动画
+      // 创建动画
       document.documentElement.animate(
-          // 动画样式(从0%到最大半径的圆形)
           {
             clipPath: [
               `circle(0% at ${clientX}px ${clientY}px)`,
               `circle(${radius}px at ${clientX}px ${clientY}px)`,
             ],
           },
-          // 设置时间和目标伪元素
           {
             duration: 300,
             pseudoElement: "::view-transition-new(root)",
@@ -82,35 +91,16 @@ function switchThemeClick(e) {
       );
     });
   } else {
-    // 如果是移动端直接变色
+    // 移动端不整这么花哨的
     document.documentElement.classList.toggle("dark");
     localStorage.setItem('theme', document.documentElement.classList.contains('dark') ? 'dark' : 'light');
   }
 }
 
 /**
- * 根据路由判断哪个tab被选中
+ * 检查主题设置
  */
-function checkTabActive() {
-  const route = useRoute();
-  console.log('route.name', route.name);
-  switch (route.name) {
-    case 'main':
-      document.querySelector('.navbar-tabs li a').classList.add('active');
-      break;
-    case 'blog':
-      document.querySelector('.navbar-tabs li a:nth-child(2)').classList.add('active');
-      break;
-    case 'codespace':
-      document.querySelector('.navbar-tabs li a:nth-child(3)').classList.add('active');
-      break;
-    default:
-      document.querySelector('.navbar-tabs li a').classList.add('active');
-      break;
-  }
-}
-
-onMounted(() => {
+function checkTheme() {
   // 从localStorage加载主题设置
   const savedTheme = localStorage.getItem('theme'); // 获取本地存储的主题设置
   const toggleInputElement = document.getElementById('theme-toggle-checkbox') // 获取主题切换按钮的输入元素
@@ -133,8 +123,26 @@ onMounted(() => {
         toggleInputElement.checked = false;
       }
   }
-  checkTabActive();
-})
+}
+
+/**
+ * 检查当前路由并设置激活的tab
+ * @param currentRoute 当前路由对象
+ */
+function checkTabActive(currentRoute) {
+  activeTab.value = currentRoute.name || 'main';
+}
+
+const route = useRoute();
+
+onMounted(() => {
+  checkTheme();
+  checkTabActive(route);
+  // 监听路由变化并更新激活的tab
+  watch(route, (newRoute) => {
+    checkTabActive(newRoute);
+  });
+});
 </script>
 
 <style lang="scss" scoped>
@@ -152,7 +160,7 @@ onMounted(() => {
 
 .navbar-wrapper {
   height: var(--nav-height);
-  width: 80%;
+  width: 75%;
   padding: 0 20px;
   display: flex;
   align-items: center;
@@ -165,20 +173,36 @@ onMounted(() => {
   backdrop-filter: saturate(50%) blur(4px);
   -webkit-backdrop-filter: saturate(50%) blur(4px);
   background-image: radial-gradient(transparent 1px, var(--secondary-color) 1px);
+
+  @media screen and (max-width: 768px) {
+    width: 80%;
+    padding: 0 20px;
+  }
+
+  @media screen and (max-width: 1280px) {
+    padding: 0 32px;
+  }
+
+  @media screen and (max-width: 1680px) {
+    padding: 0 48px;
+  }
+
 }
 
 .logo {
   border-radius: 50%;
-  margin-right: 12px;
+  margin-right: 8px;
 
-  &:hover {
-    animation: flip 0.5s;
+  @media screen and (max-width: 768px) {
+    margin-right: 12px;
   }
 }
 
 .navbar-left {
   display: flex;
   align-items: center;
+  font-size: 18px;
+  color: var(--text-color);
 }
 
 .navbar-right {
@@ -186,7 +210,7 @@ onMounted(() => {
   align-items: center;
 }
 
-.navbar-tabs {
+.navbar-tabs-pc {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -196,6 +220,14 @@ onMounted(() => {
   margin: 0 48px;
   font-size: 18px;
 
+  @media screen and (max-width: 768px) {
+    display: none;
+  }
+
+  @media screen and (max-width: 1280px) {
+    font-size: 20px;
+  }
+
   li {
     display: flex;
     align-items: center;
@@ -203,7 +235,7 @@ onMounted(() => {
     cursor: pointer;
 
     a {
-      margin: 0 24px;
+      margin: 0 12px;
       color: var(--text-color);
       text-decoration-line: none;
 
@@ -212,6 +244,7 @@ onMounted(() => {
         transition: color 0.3s ease;
       }
     }
+
     &.active {
       a {
         color: var(--primary-color);
@@ -220,25 +253,20 @@ onMounted(() => {
   }
 }
 
+.navbar-tabs-mobile {
+  display: none;
+  @media screen and (max-width: 768px) {
+    display: flex;
+    margin-left: 12px;
+  }
+}
+
 .page-content {
-  transition: margin-left 0.3s ease;
-}
-
-@media screen and (min-width: 1680px) {
-  .navbar-wrapper {
-    padding: 0 48px !important;
+  margin: 0 auto;
+  width: 60%;
+  @media screen and (max-width: 768px) {
+    width: 100%;
   }
 }
 
-@media screen and (min-width: 1280px) {
-  .navbar-wrapper {
-    padding: 0 32px !important;
-  }
-}
-
-@media screen and (min-width: 768px) {
-  .navbar-wrapper {
-    padding: 0 32px !important;
-  }
-}
 </style>

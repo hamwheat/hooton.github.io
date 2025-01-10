@@ -2,7 +2,7 @@
  * @Author: yang
  * @Date: 2025-01-02 11:20:55
  * @LastEditors: yang
- * @LastEditTime: 2025-01-08 16:24:09
+ * @LastEditTime: 2025-01-10 13:22:37
  * @Description: 全局样式
  */
 
@@ -19,9 +19,11 @@
     --nav-z-index: 12; /* 导航栏的z-index */
     --sidebar-z-index: 12; /* 侧边栏的z-index */
 
-    --bg-text-color: #666666; /* 背景文字颜色 */
+    --bg-text-color: #66666666; /* 背景文字颜色 */
     --bg-box-shadow: 0 0 150px -20px rgba(0, 0, 0, 0.5); /* 背景阴影 */
     --bg-text-shadow: 0 0 50px rgba(0, 0, 0, 0.07); /* 背景文字阴影 */
+
+    --tech-stack-box-bg-color: rgba(0, 0, 0, 0.1);
 
 }
 :root.dark {
@@ -42,6 +44,8 @@
     --bg-box-shadow: 0 0 150px -20px rgba(0, 0, 0, 0.5); /* 背景阴影 */
     --bg-text-shadow: 0 0 50px rgba(0, 0, 0, 0.07); /* 背景文字阴影 */
 
+    --tech-stack-box-bg-color: #44475a57;
+
 }
 
 /* 设置试图过度过程的微元素 */
@@ -58,5 +62,4 @@ body {
     margin: 0;
     padding: 0;
     border: 0;
-    /*transition: background-color 0.5s ease, color 0.5s ease;*/
 }

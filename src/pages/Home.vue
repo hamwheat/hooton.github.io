@@ -2,154 +2,157 @@
  * @Author: yang
  * @Date: 2024-12-31 14:41:49
  * @LastEditors: yang
- * @LastEditTime: 2025-01-04 16:20:34
+ * @LastEditTime: 2025-01-10 14:17:35
  * @Description: 主页
  -->
 <template>
-  <div class="main-content">
-    <div class="content">
-      <h1>{{ title }}</h1>
-      <p>{{ description }}</p>
-      <img :src="imageSrc" :alt="imageAlt" class="welcome-image" />
-
-      <h2>{{ section1Title }}</h2>
-      <p>{{ section1Description }}</p>
-      <img :src="section1ImageSrc" :alt="section1ImageAlt" class="section-image" />
-
-      <h2>{{ section2Title }}</h2>
-      <p>{{ section2Description }}</p>
-      <img :src="section2ImageSrc" :alt="section2ImageAlt" class="section-image" />
-
-      <h2>{{ section3Title }}</h2>
-      <p>{{ section3Description }}</p>
-      <img :src="section3ImageSrc" :alt="section3ImageAlt" class="section-image" />
-
-      <h2>{{ section4Title }}</h2>
-      <p>{{ section4Description }}</p>
-      <img :src="section4ImageSrc" :alt="section4ImageAlt" class="section-image" />
+  <div class="home">
+    <div class="greetings">
+      <div class="greetings-text">
+        <div class="welcome"></div>
+        <p class="description">
+          欢迎来到我的网站！我致力于提供高质量的内容和优秀的用户体验。在这里，你可以找到各种有趣的文章、教程和资源。
+        </p>
+        <div class="actions">
+          <button class="action-button">了解更多</button>
+          <button class="action-button">注册</button>
+        </div>
+      </div>
+      <div class="greetings-img">
+        <img src="../assets/images/logo.jpg" alt="Welcome Image" />
+      </div>
+    </div>
+    <div class="skill-trans">
+      <SkillTrans />
     </div>
   </div>
 </template>
 
 <script setup>
-import { ref, onMounted } from 'vue';
-
-const title = ref('欢迎来到我们的网站');
-const description = ref('这是一个内容丰富的欢迎页面，旨在为您提供最佳的浏览体验。无论白天还是夜晚，我们都能为您呈现最舒适的主题。');
-
-const imageSrc = ref('./assets/images/welcome.jpg'); // 请确保该图片路径正确
-const imageAlt = ref('欢迎图片');
-
-const section1Title = ref('关于我们');
-const section1Description = ref('我们是一家致力于提供优质服务和技术支持的公司。我们的团队由一群充满激情和经验丰富的专业人士组成，致力于为客户提供最优质的产品和服务。');
-const section1ImageSrc = ref('./assets/images/about.jpg'); // 请确保该图片路径正确
-const section1ImageAlt = ref('关于我们图片');
-
-const section2Title = ref('我们的服务');
-const section2Description = ref('我们提供多种服务，包括但不限于软件开发、技术支持、咨询服务等。我们的服务旨在帮助客户解决实际问题，提高业务效率。');
-const section2ImageSrc = ref('./assets/images/services.jpg'); // 请确保该图片路径正确
-const section2ImageAlt = ref('我们的服务图片');
-
-const section3Title = ref('客户评价');
-const section3Description = ref('我们的客户对我们的服务给予了高度评价。以下是一些客户的反馈：\n\n“非常满意，服务非常专业。” —— 张三\n“技术支持非常到位，解决问题很快。” —— 李四');
-const section3ImageSrc = ref('./assets/images/testimonials.jpg'); // 请确保该图片路径正确
-const section3ImageAlt = ref('客户评价图片');
-
-const section4Title = ref('联系我们');
-const section4Description = ref('如果您有任何问题或需要帮助，请随时联系我们。\n\n电话：123-456-7890\n邮箱：contact@example.com\n地址：XX市XX区XX路XX号');
-const section4ImageSrc = ref('./assets/images/contact.jpg'); // 请确保该图片路径正确
-const section4ImageAlt = ref('联系我们图片');
-
-onMounted(() => {
-  // 根据主题调整图片或其他内容
-  const isDarkTheme = document.documentElement.classList.contains('dark');
-  if (isDarkTheme) {
-    imageSrc.value = './assets/images/welcome-dark.jpg'; // 夜晚主题下的图片
-    section1ImageSrc.value = './assets/images/about-dark.jpg'; // 夜晚主题下的图片
-    section2ImageSrc.value = './assets/images/services-dark.jpg'; // 夜晚主题下的图片
-    section3ImageSrc.value = './assets/images/testimonials-dark.jpg'; // 夜晚主题下的图片
-    section4ImageSrc.value = './assets/images/contact-dark.jpg'; // 夜晚主题下的图片
-  } else {
-    imageSrc.value = './assets/images/welcome.jpg'; // 白天主题下的图片
-    section1ImageSrc.value = './assets/images/about.jpg'; // 白天主题下的图片
-    section2ImageSrc.value = './assets/images/services.jpg'; // 白天主题下的图片
-    section3ImageSrc.value = './assets/images/testimonials.jpg'; // 白天主题下的图片
-    section4ImageSrc.value = './assets/images/contact.jpg'; // 白天主题下的图片
-  }
-});
+import SkillTrans from "@/components/transporter/SkillTrans.vue";
 </script>
 
-<style scoped>
-.main-content {
-  padding: 24px;
-  background-color: var(--background-color);
+<style lang="scss" scoped>
+.home {
+  width: 100%;
+  height: 100%;
+  padding: 50px 0;
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
 }
 
-.content {
-  max-width: 800px;
-  width: 100%;
-  margin-bottom: 24px;
-  background-color: var(--secondary-color);
-  padding: 24px;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  transition: box-shadow 0.3s ease;
-}
-
-.content:hover {
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-}
-
-.content h1, .content h2 {
-  color: var(--primary-color);
-  margin-bottom: 16px;
-  font-size: 24px;
-}
-
-.content h2 {
-  font-size: 20px;
-}
-
-.content p {
-  line-height: 1.6;
+.greetings {
   color: var(--text-color);
+  font-size: 1.5rem;
+  text-align: center;
+  margin-bottom: 20px;
+  font-weight: bold;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  .greetings-text {
+    width: 50%;
+    border-left: 4px solid #fde047cc;
+    padding-left: 20px;
+
+    .welcome {
+      width: fit-content;
+      font-weight: bold;
+      font-family: monospace;
+      white-space: pre;
+      font-size: 64px;
+      line-height: 1.2em;
+      height: 1.2em;
+      overflow: hidden;
+      position: relative;
+
+      &:before {
+        content: "欢迎光临\A欢迎光\A欢迎\A欢\A \AW\AWe\AWel\AWelc\AWelco\AWelcom\AWelcome\AWelcom\AWelco\AWelc\AWel\AWe\AW\A \A欢\A欢迎\A欢迎光\A欢迎光临";
+        text-align: left;
+        white-space: pre;
+        display: inline-block;
+        animation: l39 2s steps(23) alternate;
+      }
+    }
+
+    .description {
+      margin-top: 20px;
+      font-size: 1.2rem;
+      color: var(--secondary-text-color);
+      text-align: left;
+    }
+
+    .actions {
+      margin-top: 20px;
+      display: flex;
+      gap: 10px;
+
+      .action-button {
+        padding: 10px 20px;
+        font-size: 1rem;
+        color: var(--button-text-color);
+        background-color: var(--button-color);
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+
+        &:hover {
+          background-color: var(--button-hover-color);
+        }
+      }
+    }
+  }
+
+  .greetings-img {
+    width: 45%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+
+    img {
+      width: 40%;
+      height: auto;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+  }
 }
 
-.welcome-image, .section-image {
-  max-width: 100%;
-  height: auto;
-  margin-top: 24px;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+.skill-trans {
+  margin-top: 25px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
 }
 
-@media (min-width: 768px) {
-  .main-content {
-    flex-direction: row;
-    justify-content: space-around;
-  }
+@media screen and (max-width: 768px) {
+  .greetings {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 
-  .content {
-    margin-bottom: 0;
-    margin-right: 16px;
-    margin-left: 16px;
-  }
+    .greetings-text {
+      width: 100%;
+      padding-left: 0;
+      border-left: none;
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+    }
 
-  .content:last-child {
-    margin-right: 0;
-  }
-}
-
-@media (min-width: 1024px) {
-  .main-content {
-    padding: 32px;
-  }
-
-  .content {
-    padding: 32px;
+    .greetings-img {
+      width: 100%;
+      margin-top: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
   }
 }
 </style>
+
