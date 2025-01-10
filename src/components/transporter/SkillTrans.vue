@@ -2,7 +2,7 @@
  * @Author: yang
  * @Date: 2025-01-09 17:04:01
  * @LastEditors: yang
- * @LastEditTime: 2025-01-10 14:53:41
+ * @LastEditTime: 2025-01-10 15:54:03
  * @Description: 图标传送带
  -->
 <template>
@@ -124,7 +124,7 @@
   align-items: center;
   
   &:hover {
-    transform: scale(1.1);
+    transform: scale(1.2);
   }
   
   img {
