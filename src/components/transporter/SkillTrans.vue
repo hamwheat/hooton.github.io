@@ -2,7 +2,7 @@
  * @Author: yang
  * @Date: 2025-01-09 17:04:01
  * @LastEditors: yang
- * @LastEditTime: 2025-01-10 15:54:03
+ * @LastEditTime: 2025-01-13 16:48:09
  * @Description: 图标传送带
  -->
 <template>
@@ -95,7 +95,7 @@
     width: 40px;
     height: 96px;
     background-image: linear-gradient(-90deg, #0000001c, transparent);
-    z-index: 9;
+    z-index: 5;
     border-radius: 0 10px 10px 0;
   }
 }
