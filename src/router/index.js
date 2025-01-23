@@ -15,6 +15,16 @@ const router = createRouter({
             component: () => import('../pages/Home.vue'),
         },
         {
+            path: '/blog',
+            name: 'blog',
+            component: () => import('../pages/Blog.vue'),
+        },
+        {
+            path: '/codeSpace',
+            name: 'codeSpace',
+            component: () => import('../pages/CodeSpace.vue'),
+        },
+        {
             path: '/:pathMatch(.*)*', // 通配符路由，匹配所有未定义的路径
             name: 'error',
             component: () => import('../pages/Error.vue'),

@@ -10,13 +10,13 @@
       <div class="navbar-right">
         <ul class="navbar-tabs-pc">
           <li :class="{ active: activeTab === 'main' }">
-            <a href="javascript:void(0)" @click="tabClick" v-text="'<Main />'"></a>
+            <a href="/hooton.github.io/#/" @click="tabClick" v-text="'<Main />'"></a>
           </li>
           <li :class="{ active: activeTab === 'blog' }">
-            <a href="javascript:void(0)" @click="tabClick" v-text="'<Blog />'"></a>
+            <a href="/hooton.github.io/#/blog" @click="tabClick" v-text="'<Blog />'"></a>
           </li>
-          <li :class="{ active: activeTab === 'codespace' }">
-            <a href="javascript:void(0)" @click="tabClick" v-text="'<CodeSpace />'"></a>
+          <li :class="{ active: activeTab === 'codeSpace' }">
+            <a href="/hooton.github.io/#/codeSpace" @click="tabClick" v-text="'<CodeSpace />'"></a>
           </li>
         </ul>
         <ThemeToggle @switchThemeClick="switchThemeClick"/>
@@ -130,7 +130,7 @@ function checkTheme() {
  * @param currentRoute 当前路由对象
  */
 function checkTabActive(currentRoute) {
-  activeTab.value = currentRoute.name || 'main';
+  activeTab.value = currentRoute.name || '';
 }
 
 const route = useRoute();
