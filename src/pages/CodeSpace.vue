@@ -2,230 +2,253 @@
  * @Author: yang
  * @Date: 2025-01-23 09:18:28
  * @LastEditors: yang
- * @LastEditTime: 2025-01-23 16:00:03
+ * @LastEditTime: 2025-01-24 15:34:34
  * @Description: 
  -->
 <template>
-  <div class="container" style="scale: 0.5">
+  <div class="container" ref="containerRef">
     <div class="house" ref="houseRef">
-      <div class="h-lights">
-        <div class="h-light"></div>
-        <div class="h-light"></div>
-        <div class="h-light"></div>
-        <div class="h-light"></div>
-        <div class="h-light"></div>
-        <div class="h-light"></div>
+      <!-- 房间光照 -->
+      <div class="lights-area">
+        <div class="light"></div>
+        <div class="light"></div>
+        <div class="light"></div>
+        <div class="light"></div>
+        <div class="light"></div>
+        <div class="light"></div>
       </div>
-      <div class="h-shadow"></div>
-      <div class="alt">
-        <div class="alt__front face"></div>
-        <div class="alt__back face"></div>
-        <div class="alt__right face"></div>
-        <div class="alt__left face"></div>
-        <div class="alt__top face">
+      <!-- 地板 -->
+      <div class="floor">
+        <div class="floor__front face"></div>
+        <div class="floor__back face"></div>
+        <div class="floor__right face"></div>
+        <div class="floor__left face"></div>
+        <div class="floor__top face">
           <div class="light"></div>
           <div class="light"></div>
         </div>
-        <div class="alt__bottom face"></div>
+        <div class="floor__bottom face"></div>
       </div>
-      <div class="alb">
-        <div class="alb__front face"></div>
-        <div class="alb__back face"></div>
-        <div class="alb__right face"></div>
-        <div class="alb__left face"></div>
-        <div class="alb__top face"></div>
-        <div class="alb__bottom face"></div>
+      <!-- 左下角边框 -->
+      <div class="left-bottom-frame">
+        <div class="left-bottom-frame__front face"></div>
+        <div class="left-bottom-frame__back face"></div>
+        <div class="left-bottom-frame__right face"></div>
+        <div class="left-bottom-frame__left face"></div>
+        <div class="left-bottom-frame__top face"></div>
+        <div class="left-bottom-frame__bottom face"></div>
       </div>
-      <div class="arb">
-        <div class="arb__front face"></div>
-        <div class="arb__back face"></div>
-        <div class="arb__right face"></div>
-        <div class="arb__left face"></div>
-        <div class="arb__top face"></div>
-        <div class="arb__bottom face"></div>
+      <!-- 右下角边框 -->
+      <div class="right-bottom-frame">
+        <div class="right-bottom-frame__front face"></div>
+        <div class="right-bottom-frame__back face"></div>
+        <div class="right-bottom-frame__right face"></div>
+        <div class="right-bottom-frame__left face"></div>
+        <div class="right-bottom-frame__top face"></div>
+        <div class="right-bottom-frame__bottom face"></div>
       </div>
-      <div class="blt">
-        <div class="blt__front face"></div>
-        <div class="blt__back face"></div>
-        <div class="blt__right face"></div>
-        <div class="blt__left face"></div>
-        <div class="blt__top face"></div>
-        <div class="blt__bottom face"></div>
+      <!-- 左侧墙壁 -->
+      <div class="left-wall">
+        <div class="left-wall__front face"></div>
+        <div class="left-wall__back face"></div>
+        <div class="left-wall__right face"></div>
+        <div class="left-wall__left face"></div>
+        <div class="left-wall__top face"></div>
+        <div class="left-wall__bottom face"></div>
       </div>
-      <div class="blt2">
-        <div class="blt2__front face"></div>
-        <div class="blt2__back face"></div>
-        <div class="blt2__right face"></div>
-        <div class="blt2__left face"></div>
-        <div class="blt2__top face"></div>
-        <div class="blt2__bottom face"></div>
+      <!-- 左上角边框 -->
+      <div class="left-top-frame">
+        <div class="left-top-frame__front face"></div>
+        <div class="left-top-frame__back face"></div>
+        <div class="left-top-frame__right face"></div>
+        <div class="left-top-frame__left face"></div>
+        <div class="left-top-frame__top face"></div>
+        <div class="left-top-frame__bottom face"></div>
       </div>
-      <div class="blb">
-        <div class="blb__front face"></div>
-        <div class="blb__back face"></div>
-        <div class="blb__right face"></div>
-        <div class="blb__left face"></div>
-        <div class="blb__top face"></div>
-        <div class="blb__bottom face"></div>
+      <!-- 右侧墙壁 -->
+      <div class="right-wall">
+        <div class="right-wall__front face"></div>
+        <div class="right-wall__back face"></div>
+        <div class="right-wall__right face"></div>
+        <div class="right-wall__left face"></div>
+        <div class="right-wall__top face"></div>
+        <div class="right-wall__bottom face"></div>
       </div>
-      <div class="blb2">
-        <div class="blb2__front face"></div>
-        <div class="blb2__back face"></div>
-        <div class="blb2__right face"></div>
-        <div class="blb2__left face"></div>
-        <div class="blb2__top face"></div>
-        <div class="blb2__bottom face"></div>
+      <!-- 右上角边框 -->
+      <div class="right-top-frame">
+        <div class="right-top-frame__front face"></div>
+        <div class="right-top-frame__back face"></div>
+        <div class="right-top-frame__right face"></div>
+        <div class="right-top-frame__left face"></div>
+        <div class="right-top-frame__top face"></div>
+        <div class="right-top-frame__bottom face"></div>
       </div>
-      <div class="puerta-c">
-        <div class="puerta">
-          <div class="puerta__front face"></div>
-          <div class="puerta__back face"></div>
-          <div class="puerta__right face"></div>
-          <div class="puerta__left face"></div>
-          <div class="puerta__top face"></div>
-          <div class="puerta__bottom face"></div>
+      <!-- 门整体 -->
+      <div class="door-area">
+        <!-- 门 -->
+        <div class="door">
+          <div class="door__front face" ref="doorRef" @click="openDoor"></div>
+          <div class="door__back face"></div>
+          <div class="door__right face"></div>
+          <div class="door__left face"></div>
+          <div class="door__top face"></div>
+          <div class="door__bottom face"></div>
         </div>
-        <div class="puerta-l">
-          <div class="puerta-l__front face"></div>
-          <div class="puerta-l__back face"></div>
-          <div class="puerta-l__right face"></div>
-          <div class="puerta-l__left face"></div>
-          <div class="puerta-l__top face"></div>
-          <div class="puerta-l__bottom face"></div>
+        <!-- 门框-左 -->
+        <div class="door-frame-left">
+          <div class="door-frame-left__front face"></div>
+          <div class="door-frame-left__back face"></div>
+          <div class="door-frame-left__right face"></div>
+          <div class="door-frame-left__left face"></div>
+          <div class="door-frame-left__top face"></div>
+          <div class="door-frame-left__bottom face"></div>
         </div>
-        <div class="puerta-r">
-          <div class="puerta-r__front face"></div>
-          <div class="puerta-r__back face"></div>
-          <div class="puerta-r__right face"></div>
-          <div class="puerta-r__left face"></div>
-          <div class="puerta-r__top face"></div>
-          <div class="puerta-r__bottom face"></div>
+        <!-- 门框-右 -->
+        <div class="door-frame-right">
+          <div class="door-frame-right__front face"></div>
+          <div class="door-frame-right__back face"></div>
+          <div class="door-frame-right__right face"></div>
+          <div class="door-frame-right__left face"></div>
+          <div class="door-frame-right__top face"></div>
+          <div class="door-frame-right__bottom face"></div>
         </div>
-        <div class="puerta-t">
-          <div class="puerta-t__front face"></div>
-          <div class="puerta-t__back face"></div>
-          <div class="puerta-t__right face"></div>
-          <div class="puerta-t__left face"></div>
-          <div class="puerta-t__top face"></div>
-          <div class="puerta-t__bottom face"></div>
+        <!-- 门框-顶 -->
+        <div class="door-frame-top">
+          <div class="door-frame-top__front face"></div>
+          <div class="door-frame-top__back face"></div>
+          <div class="door-frame-top__right face"></div>
+          <div class="door-frame-top__left face"></div>
+          <div class="door-frame-top__top face"></div>
+          <div class="door-frame-top__bottom face"></div>
         </div>
       </div>
-      <div class="cuadro-l">
-        <div class="cuadro-l__front face"></div>
-        <div class="cuadro-l__back face"></div>
-        <div class="cuadro-l__right face"></div>
-        <div class="cuadro-l__left face"></div>
-        <div class="cuadro-l__top face"></div>
-        <div class="cuadro-l__bottom face"></div>
+      <!-- 照片-左 -->
+      <div class="picture-left">
+        <div class="picture-left__front face"></div>
+        <div class="picture-left__back face"></div>
+        <div class="picture-left__right face"></div>
+        <div class="picture-left__left face"></div>
+        <div class="picture-left__top face"></div>
+        <div class="picture-left__bottom face"></div>
       </div>
-      <div class="cuadro-r">
-        <div class="cuadro-r__front face"></div>
-        <div class="cuadro-r__back face"></div>
-        <div class="cuadro-r__right face"></div>
-        <div class="cuadro-r__left face"></div>
-        <div class="cuadro-r__top face"></div>
-        <div class="cuadro-r__bottom face"></div>
+      <!-- 照片-右 -->
+      <div class="picture-right">
+        <div class="picture-right__front face"></div>
+        <div class="picture-right__back face"></div>
+        <div class="picture-right__right face"></div>
+        <div class="picture-right__left face"></div>
+        <div class="picture-right__top face"></div>
+        <div class="picture-right__bottom face"></div>
       </div>
+      <!-- 电视 -->
       <div class="tv">
         <div class="tv__front face"></div>
         <div class="tv__back face"></div>
-        <div class="tv__right face"></div>
+        <div class="tv__right face" ref="tvRightRef"></div>
         <div class="tv__left face"></div>
         <div class="tv__top face"></div>
         <div class="tv__bottom face"></div>
       </div>
-      <div class="muro">
-        <div class="muro__front face"></div>
-        <div class="muro__back face"></div>
-        <div class="muro__right face"></div>
-        <div class="muro__left face"></div>
-        <div class="muro__top face"></div>
-        <div class="muro__bottom face"></div>
+      <!-- 凸墙 -->
+      <div class="convex-wall">
+        <div class="convex-wall__front face"></div>
+        <div class="convex-wall__back face"></div>
+        <div class="convex-wall__right face"></div>
+        <div class="convex-wall__left face"></div>
+        <div class="convex-wall__top face"></div>
+        <div class="convex-wall__bottom face"></div>
       </div>
-      <div class="sillon-c">
-        <div class="sillon-b">
-          <div class="sillon-b__front face"></div>
-          <div class="sillon-b__back face"></div>
-          <div class="sillon-b__right face"></div>
-          <div class="sillon-b__left face"></div>
-          <div class="sillon-b__top face"></div>
-          <div class="sillon-b__bottom face"></div>
+      <!-- 沙发 -->
+      <div class="sofa-area">
+        <!-- 底座 -->
+        <div class="sofa-set">
+          <div class="sofa-set__front face"></div>
+          <div class="sofa-set__back face"></div>
+          <div class="sofa-set__right face"></div>
+          <div class="sofa-set__left face"></div>
+          <div class="sofa-set__top face"></div>
+          <div class="sofa-set__bottom face"></div>
         </div>
-        <div class="sillon-t">
-          <div class="sillon-t__front face"></div>
-          <div class="sillon-t__back face"></div>
-          <div class="sillon-t__right face"></div>
-          <div class="sillon-t__left face"></div>
-          <div class="sillon-t__top face"></div>
-          <div class="sillon-t__bottom face"></div>
+        <!-- 靠背 -->
+        <div class="sofa-back">
+          <div class="sofa-back__front face"></div>
+          <div class="sofa-back__back face"></div>
+          <div class="sofa-back__right face"></div>
+          <div class="sofa-back__left face"></div>
+          <div class="sofa-back__top face"></div>
+          <div class="sofa-back__bottom face"></div>
         </div>
-        <div class="sillon-l">
-          <div class="sillon-l__front face"></div>
-          <div class="sillon-l__back face"></div>
-          <div class="sillon-l__right face"></div>
-          <div class="sillon-l__left face"></div>
-          <div class="sillon-l__top face"></div>
-          <div class="sillon-l__bottom face"></div>
+        <!-- 左扶手 -->
+        <div class="sofa-left">
+          <div class="sofa-left__front face"></div>
+          <div class="sofa-left__back face"></div>
+          <div class="sofa-left__right face"></div>
+          <div class="sofa-left__left face"></div>
+          <div class="sofa-left__top face"></div>
+          <div class="sofa-left__bottom face"></div>
         </div>
-        <div class="sillon-r">
-          <div class="sillon-r__front face"></div>
-          <div class="sillon-r__back face"></div>
-          <div class="sillon-r__right face"></div>
-          <div class="sillon-r__left face"></div>
-          <div class="sillon-r__top face"></div>
-          <div class="sillon-r__bottom face"></div>
+        <!-- 右扶手 -->
+        <div class="sofa-right">
+          <div class="sofa-right__front face"></div>
+          <div class="sofa-right__back face"></div>
+          <div class="sofa-right__right face"></div>
+          <div class="sofa-right__left face"></div>
+          <div class="sofa-right__top face"></div>
+          <div class="sofa-right__bottom face"></div>
         </div>
       </div>
-      <div class="mesa-c">
-        <div class="mesa">
-          <div class="mesa__front face"></div>
-          <div class="mesa__back face"></div>
-          <div class="mesa__right face"></div>
-          <div class="mesa__left face"></div>
-          <div class="mesa__top face"></div>
-          <div class="mesa__bottom face"></div>
+      <!-- 茶几 -->
+      <div class="table-c">
+        <div class="table">
+          <div class="table__front face"></div>
+          <div class="table__back face"></div>
+          <div class="table__right face"></div>
+          <div class="table__left face"></div>
+          <div class="table__top face"></div>
+          <div class="table__bottom face"></div>
         </div>
-        <div class="mesa-p">
-          <div class="mesa-p__front face"></div>
-          <div class="mesa-p__back face"></div>
-          <div class="mesa-p__right face"></div>
-          <div class="mesa-p__left face"></div>
-          <div class="mesa-p__top face"></div>
-          <div class="mesa-p__bottom face"></div>
+        <div class="table-p">
+          <div class="table-p__front face"></div>
+          <div class="table-p__back face"></div>
+          <div class="table-p__right face"></div>
+          <div class="table-p__left face"></div>
+          <div class="table-p__top face"></div>
+          <div class="table-p__bottom face"></div>
         </div>
-        <div class="mesa-p">
-          <div class="mesa-p__front face"></div>
-          <div class="mesa-p__back face"></div>
-          <div class="mesa-p__right face"></div>
-          <div class="mesa-p__left face"></div>
-          <div class="mesa-p__top face"></div>
-          <div class="mesa-p__bottom face"></div>
+        <div class="table-p">
+          <div class="table-p__front face"></div>
+          <div class="table-p__back face"></div>
+          <div class="table-p__right face"></div>
+          <div class="table-p__left face"></div>
+          <div class="table-p__top face"></div>
+          <div class="table-p__bottom face"></div>
         </div>
-        <div class="mesa-p">
-          <div class="mesa-p__front face"></div>
-          <div class="mesa-p__back face"></div>
-          <div class="mesa-p__right face"></div>
-          <div class="mesa-p__left face"></div>
-          <div class="mesa-p__top face"></div>
-          <div class="mesa-p__bottom face"></div>
+        <div class="table-p">
+          <div class="table-p__front face"></div>
+          <div class="table-p__back face"></div>
+          <div class="table-p__right face"></div>
+          <div class="table-p__left face"></div>
+          <div class="table-p__top face"></div>
+          <div class="table-p__bottom face"></div>
         </div>
-        <div class="mesa-p">
-          <div class="mesa-p__front face"></div>
-          <div class="mesa-p__back face"></div>
-          <div class="mesa-p__right face"></div>
-          <div class="mesa-p__left face"></div>
-          <div class="mesa-p__top face"></div>
-          <div class="mesa-p__bottom face"></div>
+        <div class="table-p">
+          <div class="table-p__front face"></div>
+          <div class="table-p__back face"></div>
+          <div class="table-p__right face"></div>
+          <div class="table-p__left face"></div>
+          <div class="table-p__top face"></div>
+          <div class="table-p__bottom face"></div>
         </div>
-        <div class="mesa-shadow"></div>
+        <div class="table-shadow"></div>
       </div>
-      <div class="tablet">
-        <div class="tablet__front face"></div>
-        <div class="tablet__back face"></div>
-        <div class="tablet__right face"></div>
-        <div class="tablet__left face"></div>
-        <div class="tablet__top face"></div>
-        <div class="tablet__bottom face"></div>
+      <!-- 书 -->
+      <div class="book">
+        <div class="book__front face"></div>
+        <div class="book__back face"></div>
+        <div class="book__right face"></div>
+        <div class="book__left face"></div>
+        <div class="book__top face">不要开门</div>
+        <div class="book__bottom face"></div>
       </div>
     </div>
   </div>
@@ -234,7 +257,22 @@
 <script setup>
 import {ref, onMounted, onBeforeUnmount} from 'vue';
 
+const containerRef = ref(null);
 const houseRef = ref(null);
+const doorRef = ref(null);
+const tvRightRef = ref(null);
+
+let doorOpen = ref(false);
+function openDoor() {
+  if (doorOpen.value) {
+    doorRef.value.style.transform = 'rotateX(-90deg) translateZ(-15.75vw)';
+    tvRightRef.value.style.backgroundImage = 'url(/hooton.github.io/src/assets/gif/snowflakes.gif)';
+  } else {
+    doorRef.value.style.transform = 'rotateX(-90deg) translateZ(-15.75vw) rotateY(-30deg)';
+    tvRightRef.value.style.backgroundImage = 'url(/hooton.github.io/src/assets/images/ghost.png)';
+  }
+  doorOpen.value = !doorOpen.value;
+}
 
 /**
  * 鼠标移动事件处理，改变house的transform属性
@@ -249,8 +287,8 @@ function pointerMoveHandler(e) {
     // 根据鼠标位置动态设置元素的 CSS 变换属性
     houseRef.value.style.transform = `    
       perspective(90vw)
-      rotateX(${y * 4 + 75}deg)
-      rotateZ(${-x * 12 + 45}deg)
+      rotateX(${y * 32 + 75}deg)
+      rotateZ(${-x * 96 + 45}deg)
       translateZ(-9vw)
     `;
   }
@@ -299,110 +337,102 @@ onBeforeUnmount(() => {
   transform: perspective(90vw) rotateX(75deg) rotateZ(45deg) translateZ(-9vw);
 }
 
-.h-shadow {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  box-shadow: 1.5vw -3vw 3vw #000, 1.5vw 0.5vw 1.5vw #000;
-}
-
-.h-lights {
+.lights-area {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translateX(-50%) translateY(-50%);
   width: 45vw;
   height: 45vw;
-}
 
-.h-light {
-  position: absolute;
+  .light {
+    position: absolute;
 
-  &:nth-of-type(1) {
-    bottom: 5vw;
-    right: 0;
-    width: 14vw;
-    height: 14vw;
-    border-radius: 50%;
-    background-image: radial-gradient(#1b182a, transparent);
-    filter: blur(1vw);
-  }
-
-  &:nth-of-type(2) {
-    bottom: 18vw;
-    right: -1vw;
-    width: 2vw;
-    height: 12vw;
-    border-radius: 50%;
-    transform: rotateZ(-50deg);
-    background-image: radial-gradient(rgba(81, 137, 251, .45) 50%, rgba(40, 125, 210, .45), transparent);
-    box-shadow: -1vw -1vw 2vw 1vw rgba(131, 171, 252, .1);
-    filter: blur(1vw);
-  }
-
-  &:nth-of-type(3) {
-    bottom: -2vw;
-    right: 17vw;
-    width: 5vw;
-    height: 12vw;
-    border-radius: 50%;
-    transform: rotateZ(-50deg);
-    background-image: radial-gradient(rgba(81, 137, 251, .5) 50%, rgba(40, 125, 210, .5), transparent);
-    filter: blur(2vw);
-
-    &::before, &::after {
-      content: '';
-      position: absolute;
-      width: 200%;
-      top: -6vw;
-      height: 400%;
-      background-image: linear-gradient(to bottom, rgba(40, 125, 210, .1), rgba(81, 137, 251, .1), transparent);
-      border-top-left-radius: 10vw;
-      border-top-right-radius: 10vw;
-      filter: blur(1.5vw);
+    &:nth-of-type(1) {
+      bottom: 5vw;
+      right: 0;
+      width: 14vw;
+      height: 14vw;
+      border-radius: 50%;
+      background-image: radial-gradient(#1b182a, transparent);
+      filter: blur(1vw);
     }
 
-    &::before {
-      right: -50%;
-      transform-origin: top right;
-      transform: rotateZ(15deg);
-      box-shadow: -2vw -2vw 0 rgba(81, 137, 251, .075);
+    &:nth-of-type(2) {
+      bottom: 18vw;
+      right: -1vw;
+      width: 2vw;
+      height: 12vw;
+      border-radius: 50%;
+      transform: rotateZ(-50deg);
+      background-image: radial-gradient(rgba(81, 137, 251, .45) 50%, rgba(40, 125, 210, .45), transparent);
+      box-shadow: -1vw -1vw 2vw 1vw rgba(131, 171, 252, .1);
+      filter: blur(1vw);
     }
 
-    &::after {
-      left: -50%;
+    &:nth-of-type(3) {
+      bottom: -2vw;
+      right: 17vw;
+      width: 5vw;
+      height: 12vw;
+      border-radius: 50%;
+      transform: rotateZ(-50deg);
+      background-image: radial-gradient(rgba(81, 137, 251, .5) 50%, rgba(40, 125, 210, .5), transparent);
+      filter: blur(2vw);
+
+      &::before, &::after {
+        content: '';
+        position: absolute;
+        width: 200%;
+        top: -6vw;
+        height: 400%;
+        background-image: linear-gradient(to bottom, rgba(40, 125, 210, .1), rgba(81, 137, 251, .1), transparent);
+        border-top-left-radius: 10vw;
+        border-top-right-radius: 10vw;
+        filter: blur(1.5vw);
+      }
+
+      &::before {
+        right: -50%;
+        transform-origin: top right;
+        transform: rotateZ(15deg);
+        box-shadow: -2vw -2vw 0 rgba(81, 137, 251, .075);
+      }
+
+      &::after {
+        left: -50%;
+        transform-origin: top left;
+        transform: rotateZ(-15deg);
+        box-shadow: 2vw -2vw 0 rgba(81, 137, 251, .075);
+      }
+    }
+
+    &:nth-of-type(4) {
+      bottom: 5vw;
+      left: 8vw;
+      width: 28vw;
+      height: 4vw;
       transform-origin: top left;
-      transform: rotateZ(-15deg);
-      box-shadow: 2vw -2vw 0 rgba(81, 137, 251, .075);
+      transform: skewX(58deg);
+      background-image: linear-gradient(to right, rgba(81, 137, 251, .075) 10%, transparent 25%, transparent, rgba(0, 0, 0, .15));
+      filter: blur(0.25vw);
+    }
+
+    &:nth-of-type(6) {
+      bottom: 14vw;
+      right: 2vw;
+      width: 8vw;
+      height: 16vw;
+      transform-origin: bottom left;
+      transform: skewY(49deg);
+      background-image: linear-gradient(to left, rgba(0, 0, 0, .1), rgba(0, 0, 0, .7));
+      filter: blur(0.35vw);
     }
   }
-
-  &:nth-of-type(4) {
-    bottom: 5vw;
-    left: 8vw;
-    width: 28vw;
-    height: 4vw;
-    transform-origin: top left;
-    transform: skewX(58deg);
-    background-image: linear-gradient(to right, rgba(81, 137, 251, .075) 10%, transparent 25%, transparent, rgba(0, 0, 0, .15));
-    filter: blur(0.25vw);
-  }
-
-  &:nth-of-type(6) {
-    bottom: 14vw;
-    right: 2vw;
-    width: 8vw;
-    height: 16vw;
-    transform-origin: bottom left;
-    transform: skewY(49deg);
-    background-image: linear-gradient(to left, rgba(0, 0, 0, .1), rgba(0, 0, 0, .7));
-    filter: blur(0.35vw);
-  }
+  
 }
 
-.alt {
+.floor {
   position: absolute;
   left: 0;
   top: 0;
@@ -478,7 +508,7 @@ onBeforeUnmount(() => {
   
 }
 
-.alb {
+.left-bottom-frame {
   position: absolute;
   left: 0;
   bottom: 0;
@@ -535,7 +565,7 @@ onBeforeUnmount(() => {
   
 }
 
-.arb {
+.right-bottom-frame {
   position: absolute;
   right: 0;
   bottom: 0;
@@ -602,7 +632,7 @@ onBeforeUnmount(() => {
   
 }
 
-.blt {
+.left-wall {
   position: absolute;
   left: 0;
   top: 0;
@@ -679,7 +709,7 @@ onBeforeUnmount(() => {
   
 }
 
-.blt2 {
+.left-top-frame {
   position: absolute;
   left: 0;
   top: 0;
@@ -731,7 +761,7 @@ onBeforeUnmount(() => {
   }
 
   &__top {
-    width: 2.5vw;
+    width: 2.1vw;
     height: 27vw;
     transform-origin: top left;
     transform: translateZ(0.75vw);
@@ -748,7 +778,7 @@ onBeforeUnmount(() => {
   
 }
 
-.blb {
+.right-wall {
   position: absolute;
   left: 1vw;
   top: 0;
@@ -824,7 +854,7 @@ onBeforeUnmount(() => {
   
 }
 
-.blb2 {
+.right-top-frame {
   position: absolute;
   left: 2vw;
   top: 0;
@@ -877,7 +907,7 @@ onBeforeUnmount(() => {
 
   &__top {
     width: 25vw;
-    height: 2.5vw;
+    height: 2.1vw;
     transform-origin: top left;
     transform: translateZ(0.75vw);
     background-image: linear-gradient(to left, #9e99c1, #fbfafe);
@@ -1148,9 +1178,12 @@ onBeforeUnmount(() => {
     height: 6vw;
     transform-origin: top left;
     transform: rotateY(90deg) rotateZ(-90deg) translateZ(0.5vw) translateX(-12vw) translateY(-6vw);
-    background-color: #9cbcfc;
+    //background-color: #9cbcfc;
     border: 0.125vw solid #000;
     animation: pantalla-tv 0.25s infinite alternate;
+    background-image: url("/src/assets/gif/snowflakes.gif");
+    background-size: cover;
+    opacity: 0.8;
 
     &::before {
       content: '';
@@ -1158,7 +1191,7 @@ onBeforeUnmount(() => {
       width: 100%;
       height: 100%;
       box-shadow: 0.125vw 0.125vw 1vw rgba(81, 137, 251, .5), -0.125vw 0.125vw 1vw rgba(81, 137, 251, .5), 0.125vw -0.125vw 1vw rgba(81, 137, 251, .5), -0.125vw -0.125vw 1vw rgba(81, 137, 251, .5);
-      background-image: url("/src/assets/images/ghost.png");
+      //background-image: url("/src/assets/gif/snowflakes.gif");
       background-size: cover;
       background-repeat: no-repeat;
       background-position: bottom;
@@ -1272,7 +1305,7 @@ onBeforeUnmount(() => {
   
 }
 
-.cuadro-l, .cuadro-r {
+.picture-left, .picture-right {
   position: absolute;
   left: 13vw;
   top: 1vw;
@@ -1281,7 +1314,7 @@ onBeforeUnmount(() => {
   transform: translateZ(10vw);
 }
 
-.cuadro-l__front, .cuadro-r__front {
+.picture-left__front, .picture-right__front {
   width: 5vw;
   height: 7vw;
   transform-origin: bottom left;
@@ -1291,7 +1324,7 @@ onBeforeUnmount(() => {
   background-position: center;
 }
 
-.cuadro-l__back, .cuadro-r__back {
+.picture-left__back, .picture-right__back {
   width: 5vw;
   height: 7vw;
   transform-origin: top left;
@@ -1300,7 +1333,7 @@ onBeforeUnmount(() => {
   box-shadow: 0.35vw 0.35vw 0.35vw rgba(81, 137, 251, .2), -0.35vw 0.35vw 0.35vw rgba(81, 137, 251, .2), -0.35vw -0.35vw 0.35vw rgba(81, 137, 251, .2), 0.35vw -0.35vw 0.35vw rgba(81, 137, 251, .2);
 }
 
-.cuadro-l__right, .cuadro-r__right {
+.picture-left__right, .picture-right__right {
   width: 0.25vw;
   height: 7vw;
   transform-origin: top left;
@@ -1308,7 +1341,7 @@ onBeforeUnmount(() => {
   background-color: #383358;
 }
 
-.cuadro-l__left, .cuadro-r__left {
+.picture-left__left, .picture-right__left {
   //width: 0.25vw;
   height: 7vw;
   transform-origin: top left;
@@ -1316,7 +1349,7 @@ onBeforeUnmount(() => {
   background-color: #9e99c1;
 }
 
-.cuadro-l__top, .cuadro-r__top {
+.picture-left__top, .picture-right__top {
   width: 5vw;
   //height: 0.25vw;
   transform-origin: top left;
@@ -1324,7 +1357,7 @@ onBeforeUnmount(() => {
   background-color: #9e99c1;
 }
 
-.cuadro-l__bottom, .cuadro-r__bottom {
+.picture-left__bottom, .picture-right__bottom {
   width: 5vw;
   height: 0.25vw;
   transform-origin: top left;
@@ -1332,7 +1365,7 @@ onBeforeUnmount(() => {
   background-color: #383358;
 }
 
-.cuadro-l__front {
+.picture-left__front {
   background-image: url('/src/assets/images/csslogo.png');
   //background-color: #d51e24;
   //border: 1vw solid #d51e24;
@@ -1352,11 +1385,11 @@ onBeforeUnmount(() => {
   
 }
 
-.cuadro-r {
+.picture-right {
   left: 20vw;
 }
 
-.cuadro-r__front {
+.picture-right__front {
   background-image: url('/src/assets/images/htmllogo.png');
   background-color: #0f1110;
   border: 0.5vw solid #0f1110;
@@ -1374,7 +1407,7 @@ onBeforeUnmount(() => {
   
 }
 
-.puerta-c {
+.door-area {
   position: absolute;
   left: 3vw;
   top: 1vw;
@@ -1391,9 +1424,29 @@ onBeforeUnmount(() => {
     filter: blur(0.5vw);
   }
   
+  &::after {
+    content: '找到你啦';
+    position: absolute;
+    width: 7.5vw;
+    height: 16vw;
+    transform-origin: bottom left;
+    transform: rotateX(-90deg) translateZ(-16.4vw);
+    background-color: #ff0202;
+    border: 0.225vw solid #ff0202;
+
+
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 1.5vw;
+    color: #000000;
+    text-shadow: 0 0 0.5vw #ff0000, 0 0 1vw #ff0000, 0 0 2vw #ff0000; 
+    text-align: center;
+    line-height: 16vw;
+    
+  }
+  
 }
 
-.puerta {
+.door {
   position: absolute;
   left: 0.5vw;
   top: 0;
@@ -1407,6 +1460,7 @@ onBeforeUnmount(() => {
     transform: rotateX(-90deg) translateZ(-15.75vw);
     background-image: linear-gradient(to bottom, #0f1110, #121332);
     border: 0.225vw solid #5189fb;
+    transition: transform 1s ease-in-out;
 
     &::before {
       content: '';
@@ -1465,7 +1519,7 @@ onBeforeUnmount(() => {
     transform: rotateY(180deg) translateX(-7vw);
   }
 
-  &-l, &-r {
+  &-frame-left, &-frame-right {
     position: absolute;
     left: 0;
     top: 0;
@@ -1473,7 +1527,7 @@ onBeforeUnmount(() => {
     height: 0.5vw;
   }
 
-  &-l__front, &-r__front {
+  &-frame-left__front, &-frame-right__front {
     width: 0.5vw;
     height: 16vw;
     transform-origin: bottom left;
@@ -1481,7 +1535,7 @@ onBeforeUnmount(() => {
     background-color: #121332;
   }
 
-  &-l__back, &-r__back {
+  &-frame-left__back, &-frame-right__back {
     width: 0.5vw;
     height: 16vw;
     transform-origin: top left;
@@ -1489,7 +1543,7 @@ onBeforeUnmount(() => {
     background-color: #0b0c1f;
   }
 
-  &-l__right, &-r__right {
+  &-frame-left__right, &-frame-right__right {
     width: 0.5vw;
     height: 16vw;
     transform-origin: top left;
@@ -1497,7 +1551,7 @@ onBeforeUnmount(() => {
     background-color: #0b0c1f;
   }
 
-  &-l__left, &-r__left {
+  &-frame-left__left, &-frame-right__left {
     width: 0.5vw;
     height: 16vw;
     transform-origin: top left;
@@ -1505,14 +1559,14 @@ onBeforeUnmount(() => {
     background-color: #121332;
   }
 
-  &-l__top, &-r__top {
+  &-frame-left__top, &-frame-right__top {
     width: 0.5vw;
     height: 0.5vw;
     transform-origin: top left;
     transform: translateZ(16vw);
   }
 
-  &-l__bottom, &-r__bottom {
+  &-frame-left__bottom, &-frame-right__bottom {
     width: 0.5vw;
     height: 0.5vw;
     transform-origin: top left;
@@ -1520,11 +1574,11 @@ onBeforeUnmount(() => {
     background-color: #0b0c1f;
   }
 
-  &-r {
+  &-frame-right {
     left: calc(100% - .5vw);
   }
 
-  &-t {
+  &-frame-top {
     left: 0;
     top: 0;
     width: 8vw;
@@ -1532,7 +1586,7 @@ onBeforeUnmount(() => {
     transform: translateZ(16vw);
   }
 
-  &-t__front {
+  &-frame-top__front {
     width: 8vw;
     height: 0.5vw;
     transform-origin: bottom left;
@@ -1540,7 +1594,7 @@ onBeforeUnmount(() => {
     background-color: #121332;
   }
 
-  &-t__back {
+  &-frame-top__back {
     width: 8vw;
     height: 0.5vw;
     transform-origin: top left;
@@ -1548,7 +1602,7 @@ onBeforeUnmount(() => {
     background-color: #0b0c1f;
   }
 
-  &-t__right {
+  &-frame-top__right {
     width: 0.5vw;
     height: 0.5vw;
     transform-origin: top left;
@@ -1556,7 +1610,7 @@ onBeforeUnmount(() => {
     background-color: #0b0c1f;
   }
 
-  &-t__left {
+  &-frame-top__left {
     width: 0.5vw;
     height: 0.5vw;
     transform-origin: top left;
@@ -1564,7 +1618,7 @@ onBeforeUnmount(() => {
     background-color: #121332;
   }
 
-  &-t__top {
+  &-frame-top__top {
     width: 8vw;
     height: 0.5vw;
     transform-origin: top left;
@@ -1572,7 +1626,7 @@ onBeforeUnmount(() => {
     background-color: #1f2158;
   }
 
-  &-t__bottom {
+  &-frame-top__bottom {
     width: 8vw;
     height: 0.5vw;
     transform-origin: top left;
@@ -1582,7 +1636,7 @@ onBeforeUnmount(() => {
   
 }
 
-.muro {
+.convex-wall {
   position: absolute;
   left: 1vw;
   top: 6vw;
@@ -1688,7 +1742,7 @@ onBeforeUnmount(() => {
   
 }
 
-.sillon-c {
+.sofa-area {
   position: absolute;
   right: 2vw;
   bottom: 6vw;
@@ -1709,7 +1763,7 @@ onBeforeUnmount(() => {
   
 }
 
-.sillon-b {
+.sofa-set {
   position: absolute;
   left: 0;
   top: 1vw;
@@ -1785,7 +1839,7 @@ onBeforeUnmount(() => {
   
 }
 
-.sillon-l, .sillon-r {
+.sofa-left, .sofa-right {
   position: absolute;
   left: 0;
   bottom: 0;
@@ -1793,7 +1847,7 @@ onBeforeUnmount(() => {
   height: 1vw;
 }
 
-.sillon-l__front, .sillon-r__front {
+.sofa-left__front, .sofa-right__front {
   width: 6vw;
   height: 4.5vw;
   transform-origin: bottom left;
@@ -1801,7 +1855,7 @@ onBeforeUnmount(() => {
   background-image: linear-gradient(to bottom, #121332, #0b0c1f);
 }
 
-.sillon-l__back, .sillon-r__back {
+.sofa-left__back, .sofa-right__back {
   width: 6vw;
   height: 4.5vw;
   transform-origin: top left;
@@ -1809,7 +1863,7 @@ onBeforeUnmount(() => {
   background-color: #0b0c1f;
 }
 
-.sillon-l__right, .sillon-r__right {
+.sofa-left__right, .sofa-right__right {
   width: 1vw;
   height: 4.5vw;
   transform-origin: top left;
@@ -1817,7 +1871,7 @@ onBeforeUnmount(() => {
   background-image: linear-gradient(to bottom, #0b0c1f, #000);
 }
 
-.sillon-l__left, .sillon-r__left {
+.sofa-left__left, .sofa-right__left {
   width: 1vw;
   height: 4.5vw;
   transform-origin: top left;
@@ -1825,7 +1879,7 @@ onBeforeUnmount(() => {
   background-image: linear-gradient(to bottom, #121332, #0b0c1f);
 }
 
-.sillon-l__top, .sillon-r__top {
+.sofa-left__top, .sofa-right__top {
   width: 6vw;
   height: 1vw;
   transform-origin: top left;
@@ -1843,7 +1897,7 @@ onBeforeUnmount(() => {
   
 }
 
-.sillon-l__bottom, .sillon-r__bottom {
+.sofa-left__bottom, .sofa-right__bottom {
   width: 6vw;
   height: 1vw;
   transform-origin: top left;
@@ -1851,11 +1905,11 @@ onBeforeUnmount(() => {
   background-color: #0b0c1f;
 }
 
-.sillon-r {
+.sofa-right {
   top: 0;
 }
 
-.sillon-t {
+.sofa-back {
   position: absolute;
   right: 0;
   top: 1vw;
@@ -1865,7 +1919,7 @@ onBeforeUnmount(() => {
   transform: rotateY(7deg);
 }
 
-.sillon-t__front {
+.sofa-back__front {
   width: 1vw;
   height: 6.5vw;
   transform-origin: bottom left;
@@ -1873,7 +1927,7 @@ onBeforeUnmount(() => {
   background-image: linear-gradient(to bottom, #0b0c1f, #070814);
 }
 
-.sillon-t__back {
+.sofa-back__back {
   width: 1vw;
   height: 6.5vw;
   transform-origin: top left;
@@ -1881,7 +1935,7 @@ onBeforeUnmount(() => {
   background-image: linear-gradient(to bottom, #0b0c1f, #0b0c1f);
 }
 
-.sillon-t__right {
+.sofa-back__right {
   width: 14vw;
   height: 6.5vw;
   transform-origin: top left;
@@ -1889,7 +1943,7 @@ onBeforeUnmount(() => {
   background-image: linear-gradient(to bottom, #0b0c1f, #000);
 }
 
-.sillon-t__left {
+.sofa-back__left {
   width: 14vw;
   height: 6.5vw;
   transform-origin: top left;
@@ -1897,7 +1951,7 @@ onBeforeUnmount(() => {
   background-color: #121332;
 }
 
-.sillon-t__top {
+.sofa-back__top {
   width: 1vw;
   height: 14vw;
   transform-origin: top left;
@@ -1915,7 +1969,7 @@ onBeforeUnmount(() => {
   
 }
 
-.sillon-t__bottom {
+.sofa-back__bottom {
   width: 1vw;
   height: 14vw;
   transform-origin: top left;
@@ -1923,13 +1977,13 @@ onBeforeUnmount(() => {
   background-color: #0b0c1f;
 }
 
-.mesa {
+.table {
   position: absolute;
   left: 0;
   top: 0;
   width: 10vw;
   height: 9vw;
-  transform: translateZ(2vw);
+  transform: translateZ(1.7vw);
 
   &__front {
     width: 10vw;
@@ -2110,13 +2164,13 @@ onBeforeUnmount(() => {
   
 }
 
-.tablet {
+.book {
   position: absolute;
   left: 13vw;
   top: 12vw;
   width: 2vw;
   height: 2.5vw;
-  transform: translateZ(3.01vw) rotateZ(15deg);
+  transform: translateZ(2.7vw) rotateZ(15deg);
 
   &__front {
     width: 2vw;
@@ -2155,9 +2209,11 @@ onBeforeUnmount(() => {
     height: 2.5vw;
     transform-origin: top left;
     transform: translateZ(0.125vw);
-    background-color: #83abfc;
+    //background-color: #83abfc;
+    background-color: #ffffff;
     border: 0.2vw solid rgba(81, 137, 251, .25);
-    animation: pantalla-tablet 0.25s infinite;
+    color: black;
+    //animation: pantalla-tablet 0.25s infinite;
   }
 
   &__bottom {
